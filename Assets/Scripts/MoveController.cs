@@ -49,7 +49,7 @@ public class MoveController : MonoBehaviour
         currPos = transform.position;
         var newPos = currPos + direction*speed;
         RaycastHit2D hit = Physics2D.Linecast(newPos, currPos);
-        return hit.collider == GetComponent<Collider2D>();
+        return !hit.collider.CompareTag("Wall");
     }
 
     private void OnCollisionEnter2D(Collision2D other)
