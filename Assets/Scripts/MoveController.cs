@@ -12,6 +12,7 @@ public class MoveController : MonoBehaviour
     private void Start()
     {
         destination = transform.position;
+        transform.rotation = Quaternion.Euler(0,0,0);
         animator.SetFloat("DirX", 0);
         animator.SetFloat("DirY", 0);
     }
@@ -20,8 +21,8 @@ public class MoveController : MonoBehaviour
         currPos = transform.position;
         Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
         rigidbody.MovePosition(p);
-        
-        if ((Vector2)transform.position == destination)
+        transform.rotation = Quaternion.Euler(0,0,0);
+        //if ((Vector2)transform.position == destination)
         {
             if (Input.GetKey(KeyCode.UpArrow))
                 Move(Vector2.up);
@@ -49,6 +50,8 @@ public class MoveController : MonoBehaviour
         currPos = transform.position;
         var newPos = currPos + direction*speed;
         RaycastHit2D hit = Physics2D.Linecast(newPos, currPos);
+        if(hit.collider == null)
+            return true;
         return !hit.collider.CompareTag("Wall");
     }
 

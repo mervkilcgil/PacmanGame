@@ -16,7 +16,10 @@ public class DotSpawner : MonoBehaviour
             while (spawnPosition.x > corners[1].position.x && spawnPosition.x <= corners[0].position.x)
             {
                 if(CanPut(spawnPosition))
-                    Instantiate(dotPrefab, spawnPosition, Quaternion.identity, transform);
+                {
+                    Dot dot = Instantiate(dotPrefab, spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
+                    dot.IncreaseScore += GameManager.Instance.IncreaseScore;
+                }
                 spawnPosition.x -=spawnInterval;
             }
             spawnPosition.y -= spawnInterval;
