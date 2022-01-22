@@ -4,14 +4,23 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Animator animator;
     private int speed = 1;
     private Vector2 destination;
-
+    private Vector2 currPos;
+    
+    private void Start()
+    {
+        destination = transform.position;
+        animator.SetFloat("DirX", 0);
+        animator.SetFloat("DirY", 0);
+    }
     private void FixedUpdate() 
     {
-        Vector2 p = Vector2.MoveTowards(transform.position, destination, speed);
+        currPos = transform.position;
+        Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
         rigidbody.MovePosition(p);
-        Vector2 currPos = transform.position;
+        
         if (currPos == destination)
         {
             if (Input.GetKey(KeyCode.UpArrow))
@@ -29,15 +38,22 @@ public class MoveController : MonoBehaviour
     {
        if(CanGo(direction))
        {
-           Vector2 currPos = transform.position;
-           destination = currPos + direction*speed;
+           Vector2 moveDir = direction * speed;
+           destination = currPos + moveDir;
+           animator.SetFloat("DirX", moveDir.x);
+           animator.SetFloat("DirY", moveDir.y);
        }
     }
     private bool CanGo(Vector2 direction) 
     {
-        Vector2 currPos = transform.position;
+        currPos = transform.position;
         var newPos = currPos + direction*speed;
         RaycastHit2D hit = Physics2D.Linecast(newPos, currPos);
         return hit.collider == GetComponent<Collider2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //destination = transform.position;
     }
 }
