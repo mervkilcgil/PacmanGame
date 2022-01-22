@@ -10,9 +10,4 @@ public class PackMan : MonoBehaviour
         animator.SetFloat("DirX", 0);
         animator.SetFloat("DirY", 0);
     }
-
-    void FixedUpdate() 
-    {
-
-    }
 }
