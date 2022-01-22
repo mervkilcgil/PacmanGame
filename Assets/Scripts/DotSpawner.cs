@@ -6,30 +6,29 @@ public class DotSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private List<Transform> corners;
-    [SerializeField] private float spawnInterval;
+    private float spawnInterval = 20f;
 
     private void Start()
     {
-        var startCorner = corners[0];
-        var endCorner = corners[1];
-        var line = (Vector2)endCorner.position - (Vector2)startCorner.position;
-        Vector2 spawnPosition = startCorner.position;
-        while(spawnPosition.y > corners[2].position.y)
+        Vector2 spawnPosition = corners[0].position;
+        while(spawnPosition.y > corners[2].position.y && spawnPosition.y <= corners[1].position.y)
         {
-            while (spawnPosition.x > endCorner.position.x)
+            while (spawnPosition.x > corners[1].position.x && spawnPosition.x <= corners[0].position.x)
             {
-                spawnPosition.x -=spawnInterval;
                 if(CanPut(spawnPosition))
-                    Instantiate(dotPrefab, spawnPosition, Quaternion.identity);
+                    Instantiate(dotPrefab, spawnPosition, Quaternion.identity, transform);
+                spawnPosition.x -=spawnInterval;
             }
-            spawnPosition.y += spawnInterval;
-            spawnPosition.x = startCorner.position.x;
+            spawnPosition.y -= spawnInterval;
+            spawnPosition.x = corners[0].position.x;
         }
     }
     
     private bool CanPut(Vector2 pos) 
     {
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+        if (hit.collider == null)
+            return true;
         return !hit.collider.CompareTag("Wall") && !hit.collider.CompareTag("Dot") && !hit.collider.CompareTag("Player");
     }
 }

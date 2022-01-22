@@ -21,7 +21,7 @@ public class MoveController : MonoBehaviour
         Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
         rigidbody.MovePosition(p);
         
-        if (currPos == destination)
+        if ((Vector2)transform.position == destination)
         {
             if (Input.GetKey(KeyCode.UpArrow))
                 Move(Vector2.up);
