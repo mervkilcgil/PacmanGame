@@ -16,7 +16,7 @@ public class DotSpawner : MonoBehaviour
         Vector2 spawnPosition = startCorner.position;
         while(spawnPosition.y > corners[2].position.y)
         {
-            while (spawnPosition.x < endCorner.position.x)
+            while (spawnPosition.x > endCorner.position.x)
             {
                 spawnPosition.x -=spawnInterval;
                 if(CanPut(spawnPosition))
