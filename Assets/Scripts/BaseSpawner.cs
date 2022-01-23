@@ -2,54 +2,42 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameConstants : MonoBehaviour
+public class BaseSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private List<GameObject> ghostPrefabs;
     [SerializeField] private List<Transform> corners;
-    private static GameConstants instance;
     private float ghostSpawnInterval = 100f;
-    public static GameConstants Instance => instance;
-    private GameObject _dotPrefab;
-    private List<GameObject> _ghostPrefabs;
-    private List<Transform> _corners; 
-
-    public void Awake()
-    {
-        instance = this;
-        _dotPrefab = dotPrefab;
-        _ghostPrefabs = ghostPrefabs;
-        _corners = corners;
-    }
+    
 
     public Vector2 GetFirstCorner()
     {
-        return _corners[0].position;
+        return corners[0].position;
     }
     
     public Vector2 GetSecondCorner()
     {
-        return _corners[1].position;
+        return corners[1].position;
     }
     
     public Vector2 GetThirdCorner()
     {
-        return _corners[2].position;
+        return corners[2].position;
     }
     
     public Vector2 GetFourthCorner()
     {
-        return _corners[3].position;
+        return corners[3].position;
     }
     
     public GameObject GetDotPrefab()
     {
-        return _dotPrefab;
+        return dotPrefab;
     }
     
     public List<GameObject> GetGhostPrefabs()
     {
-        return _ghostPrefabs;
+        return ghostPrefabs;
     }
 
     public List<Vector2> GetGhostSpawnLocations()

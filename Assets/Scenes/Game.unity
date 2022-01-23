@@ -166,6 +166,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 936b65ff210fe459fb933dddd6bbbe4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dotPrefab: {fileID: 8016804977477495766, guid: aa0fa6bbb052240b9b1b18d5cf40d772, type: 3}
+  ghostPrefabs:
+  - {fileID: 4515626366273345797, guid: dea518ab304ef405888d00d265fdec44, type: 3}
+  - {fileID: 7956422511250926308, guid: 9deb71111738746888c15ca7dc9e0b97, type: 3}
+  - {fileID: 6658308099413219225, guid: f2a7c5d752bcf4358b998c375b17a6e5, type: 3}
+  - {fileID: 1633372884398477936, guid: 520dad6f97ded41009d6f7cfad80836a, type: 3}
+  - {fileID: 7166512260891061450, guid: d07579714c84c4f078fe944cb0b2130f, type: 3}
+  corners:
+  - {fileID: 362873834}
+  - {fileID: 423583713}
+  - {fileID: 32665605}
+  - {fileID: 468244270}
   spawnTime: 5
 --- !u!1001 &32665604
 PrefabInstance:
@@ -748,7 +760,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56566405c87f14c0e9f53ff6ce3680f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConstants: {fileID: 0}
+  dotPrefab: {fileID: 8016804977477495766, guid: aa0fa6bbb052240b9b1b18d5cf40d772, type: 3}
+  ghostPrefabs:
+  - {fileID: 7956422511250926308, guid: 9deb71111738746888c15ca7dc9e0b97, type: 3}
+  - {fileID: 6658308099413219225, guid: f2a7c5d752bcf4358b998c375b17a6e5, type: 3}
+  - {fileID: 4515626366273345797, guid: dea518ab304ef405888d00d265fdec44, type: 3}
+  - {fileID: 1633372884398477936, guid: 520dad6f97ded41009d6f7cfad80836a, type: 3}
+  - {fileID: 7166512260891061450, guid: d07579714c84c4f078fe944cb0b2130f, type: 3}
+  corners:
+  - {fileID: 362873834}
+  - {fileID: 423583713}
+  - {fileID: 32665605}
+  - {fileID: 468244270}
 --- !u!4 &2083501617
 Transform:
   m_ObjectHideFlags: 0

@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class GhostSpawner : MonoBehaviour
+public class GhostSpawner : BaseSpawner
 {
     
     [SerializeField] private float spawnTime = 5f;
@@ -29,7 +27,7 @@ public class GhostSpawner : MonoBehaviour
 
     private void SpawnGhost()
     {
-        var ghostPrefabs = GameConstants.Instance.GetGhostPrefabs();
+        var ghostPrefabs = GetGhostPrefabs();
 
         int randomIndex = Random.Range(0, ghostPrefabs.Count);
         GameObject randomGhost = ghostPrefabs[randomIndex];
@@ -40,7 +38,7 @@ public class GhostSpawner : MonoBehaviour
 
     private Vector2 GetValidRandomSpawnLocation()
     {
-        var spawnLocations = GameConstants.Instance.GetGhostSpawnLocations();
+        var spawnLocations =GetGhostSpawnLocations();
         int randomIndex = Random.Range(0, spawnLocations.Count);
         return spawnLocations[randomIndex];
     }

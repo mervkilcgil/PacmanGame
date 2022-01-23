@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,12 @@ public class EndPanel : Panel
     private void OnClickExitButton()
     {
         Close();
+        StartCoroutine(nameof(SceneLoad));
+    }
+
+    IEnumerator SceneLoad()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene("Game");
     }
 }
