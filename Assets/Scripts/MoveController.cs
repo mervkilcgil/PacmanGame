@@ -23,14 +23,20 @@ public class MoveController : MonoBehaviour
     }
     protected void FixedUpdate() 
     {
+        OnUpdate();
+        MoveForward();
+    }
+
+    
+    protected virtual void OnUpdate()
+    {
         currPos = transform.position;
         Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
         rigidbody.MovePosition(p);
         transform.rotation = Quaternion.Euler(0,0,0);
-        OnUpdate();
     }
 
-    protected  void OnUpdate()
+    protected void MoveForward()
     {
         //if ((Vector2)transform.position == destination)
         {

@@ -476,7 +476,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 84.09526
+  orthographic size: 257.12378
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
@@ -513,6 +513,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4045851106053218506, guid: d8652791b546d43129c46a6cfc1dbe30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4045851106817581881, guid: d8652791b546d43129c46a6cfc1dbe30, type: 3}
       propertyPath: m_Name
       value: StartPanel

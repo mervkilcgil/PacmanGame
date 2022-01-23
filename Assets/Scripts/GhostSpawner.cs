@@ -33,7 +33,7 @@ public class GhostSpawner : MonoBehaviour
 
         int randomIndex = Random.Range(0, ghostPrefabs.Count);
         GameObject randomGhost = ghostPrefabs[randomIndex];
-        Instantiate(randomGhost, GetValidRandomSpawnLocation(), Quaternion.identity, transform);
+        Instantiate(randomGhost, GetValidRandomSpawnLocation(), Quaternion.identity);
         
         deltaTime = 0f;
     }
