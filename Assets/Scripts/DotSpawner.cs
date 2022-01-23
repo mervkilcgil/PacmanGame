@@ -6,7 +6,7 @@ public class DotSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private List<Transform> corners;
-    private float spawnInterval = 20f;
+    private float spawnInterval = 28f;
 
     private void Start()
     {
