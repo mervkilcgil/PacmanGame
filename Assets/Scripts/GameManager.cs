@@ -10,6 +10,7 @@ public class GameManager
     public Action OnEndGame;
     
     public GameState GameState => gameState;
+    public int Score => gameScore;
 
     public static GameManager Instance
     {

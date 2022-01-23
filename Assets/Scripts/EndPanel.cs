@@ -1,5 +1,9 @@
+using TMPro;
+using UnityEngine;
+
 public class EndPanel : Panel
 {
+    [SerializeField] private TextMeshProUGUI scoreText;
     public void Start()
     {
         OnStartPanel();
@@ -13,6 +17,7 @@ public class EndPanel : Panel
     public override void Open()
     {
         base.Open();
+        scoreText.text = "SCORE\n" + GameManager.Instance.Score.ToString();
         
     }
 
