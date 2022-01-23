@@ -8,7 +8,7 @@ public class GameConstants : MonoBehaviour
     [SerializeField] private List<GameObject> ghostPrefabs;
     [SerializeField] private List<Transform> corners;
     private static GameConstants instance;
-    private float ghostSpawnInterval;
+    private float ghostSpawnInterval = 100f;
     public static GameConstants Instance => instance;
 
     public void Awake()

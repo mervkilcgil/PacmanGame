@@ -76,8 +76,10 @@ public class MoveController : MonoBehaviour
            animator.SetFloat("DirY", moveDir.y);
        }
     }
-    protected bool CanGo(Vector2 direction) 
+    protected bool CanGo(Vector2 direction)
     {
+        if (GameManager.Instance.GameState != GameState.Playing) 
+            return false;
         currPos = transform.position;
         var newPos = currPos + direction*speed;
         RaycastHit2D hit = Physics2D.Linecast(newPos, currPos);

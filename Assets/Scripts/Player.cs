@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Ghost : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Ghost"))
         {
             GameManager.Instance.GameOver();
         }
