@@ -11,7 +11,6 @@ public class MoveController : MonoBehaviour
     
     protected void Start()
     {
-        soundManager.PlayMusic();
         OnStart();
     }
 
