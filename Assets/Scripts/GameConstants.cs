@@ -70,7 +70,7 @@ public class GameConstants : MonoBehaviour
     private bool CanPut(Vector2 pos) 
     {
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-        if (hit.collider == null)
+        if (hit.collider == null || hit.collider.CompareTag("Dot"))
             return true;
         return !hit.collider.CompareTag("Wall") && !hit.collider.CompareTag("Ghost") && !hit.collider.CompareTag("Player");
     }

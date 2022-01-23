@@ -3,39 +3,70 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidbody;
-    [SerializeField] private Animator animator;
-    private int speed = 1;
-    private Vector2 destination;
-    private Vector2 currPos;
+    [SerializeField] protected Rigidbody2D rigidbody;
+    [SerializeField] protected Animator animator;
+    protected int speed = 1;
+    protected Vector2 destination;
+    protected Vector2 currPos;
     
-    private void Start()
+    protected void Start()
+    {
+        OnStart();
+    }
+
+    protected virtual void OnStart()
     {
         destination = transform.position;
         transform.rotation = Quaternion.Euler(0,0,0);
         animator.SetFloat("DirX", 0);
         animator.SetFloat("DirY", 0);
     }
-    private void FixedUpdate() 
+    protected void FixedUpdate() 
     {
         currPos = transform.position;
         Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
         rigidbody.MovePosition(p);
         transform.rotation = Quaternion.Euler(0,0,0);
+        OnUpdate();
+    }
+
+    protected  void OnUpdate()
+    {
         //if ((Vector2)transform.position == destination)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                Move(Vector2.up);
-            else if (Input.GetKey(KeyCode.RightArrow))
-                Move(Vector2.right);
-            else if (Input.GetKey(KeyCode.DownArrow))
-                Move(-Vector2.up);
-            else if (Input.GetKey(KeyCode.LeftArrow))
-                Move(-Vector2.right);
+            switch (GetDirection())
+            {
+                case Direction.Up:
+                    Move(Vector2.up);
+                    break;
+                case Direction.Down: 
+                    Move(-Vector2.up);
+                    break;
+                case Direction.Right:
+                    Move(Vector2.right);
+                    break;
+                case Direction.Left:
+                    Move(-Vector2.right);
+                    break;
+            }
         }
     }
 
-    private void Move(Vector2 direction)
+    protected virtual Direction GetDirection()
+    {
+        if (Input.GetKey(KeyCode.UpArrow))
+            return Direction.Up;
+        else if (Input.GetKey(KeyCode.RightArrow))
+            return Direction.Right;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            return Direction.Down;
+        else if (Input.GetKey(KeyCode.LeftArrow))
+            return Direction.Left;
+        else
+            return Direction.None;
+    }
+
+    protected virtual void Move(Vector2 direction)
     {
        if(CanGo(direction))
        {
@@ -45,7 +76,7 @@ public class MoveController : MonoBehaviour
            animator.SetFloat("DirY", moveDir.y);
        }
     }
-    private bool CanGo(Vector2 direction) 
+    protected bool CanGo(Vector2 direction) 
     {
         currPos = transform.position;
         var newPos = currPos + direction*speed;
@@ -54,9 +85,14 @@ public class MoveController : MonoBehaviour
             return true;
         return !hit.collider.CompareTag("Wall");
     }
+    
+}
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        //destination = transform.position;
-    }
+public enum Direction
+{
+    Up,
+    Right,
+    Down,
+    Left,
+    None
 }

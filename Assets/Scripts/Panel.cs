@@ -9,18 +9,14 @@ public class Panel : MonoBehaviour
 
     [SerializeField] protected bool isOpen;
 
-    public void Start()
+    
+
+    protected virtual void OnStartPanel()
     {
-        OnStartPanel();
         if(isOpen)
             Open();
         else
             Close();
-    }
-
-    protected virtual void OnStartPanel()
-    {
-        
     }
 
     public virtual void Open()
