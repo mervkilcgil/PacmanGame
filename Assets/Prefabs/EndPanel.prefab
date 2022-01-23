@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5837493207425649154, guid: 74c86afb7a166429ab420693242a29c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7daa8c2e9263642e087e8d4ce6feece4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c86afb7a166429ab420693242a29c5, type: 3}
 --- !u!1 &8920905006059225798 stripped
@@ -238,3 +242,4 @@ MonoBehaviour:
   canvas: {fileID: 8920905007998288180}
   primaryButton: {fileID: 8920905006648603886}
   isOpen: 0
+  scoreText: {fileID: 4643174573944798246}

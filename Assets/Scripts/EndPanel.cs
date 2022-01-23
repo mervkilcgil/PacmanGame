@@ -11,7 +11,7 @@ public class EndPanel : Panel
     protected override void OnStartPanel()
     {
         base.OnStartPanel();
-        primaryButton.onClick.AddListener(OnClickStartButton);
+        primaryButton.onClick.AddListener(OnClickExitButton);
         GameManager.Instance.OnEndGame += Open;
     }
     public override void Open()
@@ -21,9 +21,9 @@ public class EndPanel : Panel
         
     }
 
-    private void OnClickStartButton()
+    private void OnClickExitButton()
     {
-        GameManager.Instance.StartGame();
         Close();
+        Application.Quit();
     }
 }

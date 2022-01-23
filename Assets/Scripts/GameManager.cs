@@ -9,7 +9,12 @@ public class GameManager
     public Action OnStartGame;
     public Action OnEndGame;
     
-    public GameState GameState => gameState;
+    public GameState GameState
+    {
+        get => gameState;
+        set => gameState = value;
+    }
+
     public int Score => gameScore;
 
     public static GameManager Instance
@@ -41,7 +46,7 @@ public class GameManager
     {
         gameState = GameState.GameOver;
         OnEndGame?.Invoke();
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
     }
 }
 
