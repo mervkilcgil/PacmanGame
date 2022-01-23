@@ -4,7 +4,7 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     
-    protected int speed = 1;
+    protected int speed = 2;
     protected Vector2 destination;
     protected Vector2 currPos;
     

@@ -18,12 +18,16 @@ public class GhostMove : MoveController
 
     protected override void Move(Vector2 direction)
     {
+        transform.position = p;
         if(CanGo(direction))
         {
             Vector2 moveDir = direction * speed;
             destination = currPos + moveDir;
-            transform.position = p;
             currPos = p;
+        }
+        else
+        {
+            transform.position = currPos;
         }
     }
 
