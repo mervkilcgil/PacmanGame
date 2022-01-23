@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GhostMove : MoveController
 {
+    private Vector2 p;
     protected override void OnStart()
     {
         destination = transform.position;
@@ -11,8 +12,8 @@ public class GhostMove : MoveController
     protected override void OnUpdate()
     {
         currPos = transform.position;
-        Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
-        transform.position = p;
+        p = Vector2.MoveTowards(currPos, destination, speed);
+        
     }
 
     protected override void Move(Vector2 direction)
@@ -21,6 +22,8 @@ public class GhostMove : MoveController
         {
             Vector2 moveDir = direction * speed;
             destination = currPos + moveDir;
+            transform.position = p;
+            currPos = p;
         }
     }
 

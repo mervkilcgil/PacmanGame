@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager
 {
@@ -39,6 +40,7 @@ public class GameManager
     {
         gameState = GameState.GameOver;
         OnEndGame?.Invoke();
+        SceneManager.LoadScene("Game");
     }
 }
 
