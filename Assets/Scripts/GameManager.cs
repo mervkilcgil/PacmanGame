@@ -8,7 +8,21 @@ public class GameManager
     private int gameScore;
     public Action OnStartGame;
     public Action OnEndGame;
-    
+    public Action OnWinGame;
+    private int dotCount;
+    public int DotCount
+    {
+        get => dotCount;
+        set
+        {
+            dotCount = value;
+            if (dotCount == 0)
+            {
+                OnWin();
+            }
+        }
+    }
+
     public GameState GameState
     {
         get => gameState;
@@ -21,7 +35,7 @@ public class GameManager
     {
         get
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new GameManager();
             }
@@ -35,7 +49,7 @@ public class GameManager
         gameScore = 0;
         OnStartGame?.Invoke();
     }
-    
+
 
     public void IncreaseScore()
     {
@@ -48,10 +62,17 @@ public class GameManager
         OnEndGame?.Invoke();
         //SceneManager.LoadScene("Game");
     }
+
+    public void OnWin()
+    {
+        gameState = GameState.Win;
+        OnWinGame?.Invoke();
+    }
 }
 
 public enum GameState
 {
     Playing,
-    GameOver
+    GameOver,
+    Win
 }

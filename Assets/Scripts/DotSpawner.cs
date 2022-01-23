@@ -20,12 +20,14 @@ public class DotSpawner : BaseSpawner
                 {
                     Dot dot = Instantiate(GetDotPrefab(), spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
                     dot.IncreaseScore += GameManager.Instance.IncreaseScore;
+                    GameManager.Instance.DotCount++;
                 }
                 spawnPosition.x -=spawnInterval;
             }
             spawnPosition.y -= spawnInterval;
             spawnPosition.x = GetFirstCorner().x;
         }
+        Debug.Log(GameManager.Instance.DotCount);
     }
     
     private bool CanPut(Vector2 pos) 

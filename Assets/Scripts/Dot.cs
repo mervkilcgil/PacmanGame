@@ -15,6 +15,7 @@ public class Dot : MonoBehaviour
         {
             IncreaseScore?.Invoke();
             Destroy(gameObject);
+            GameManager.Instance.DotCount--;
         }
     }
 
