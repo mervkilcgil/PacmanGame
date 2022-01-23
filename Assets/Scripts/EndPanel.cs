@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndPanel : Panel
 {
@@ -24,6 +25,6 @@ public class EndPanel : Panel
     private void OnClickExitButton()
     {
         Close();
-        Application.Quit();
+        SceneManager.LoadScene("Game");
     }
 }

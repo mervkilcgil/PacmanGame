@@ -10,40 +10,46 @@ public class GameConstants : MonoBehaviour
     private static GameConstants instance;
     private float ghostSpawnInterval = 100f;
     public static GameConstants Instance => instance;
+    private GameObject _dotPrefab;
+    private List<GameObject> _ghostPrefabs;
+    private List<Transform> _corners; 
 
     public void Awake()
     {
         instance = this;
+        _dotPrefab = dotPrefab;
+        _ghostPrefabs = ghostPrefabs;
+        _corners = corners;
     }
 
     public Vector2 GetFirstCorner()
     {
-        return corners[0].position;
+        return _corners[0].position;
     }
     
     public Vector2 GetSecondCorner()
     {
-        return corners[1].position;
+        return _corners[1].position;
     }
     
     public Vector2 GetThirdCorner()
     {
-        return corners[2].position;
+        return _corners[2].position;
     }
     
     public Vector2 GetFourthCorner()
     {
-        return corners[3].position;
+        return _corners[3].position;
     }
     
     public GameObject GetDotPrefab()
     {
-        return dotPrefab;
+        return _dotPrefab;
     }
     
     public List<GameObject> GetGhostPrefabs()
     {
-        return ghostPrefabs;
+        return _ghostPrefabs;
     }
 
     public List<Vector2> GetGhostSpawnLocations()
