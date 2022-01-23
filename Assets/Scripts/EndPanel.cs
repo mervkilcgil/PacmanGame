@@ -32,6 +32,6 @@ public class EndPanel : Panel
     IEnumerator SceneLoad()
     {
         yield return new WaitForSecondsRealtime(1f);
-        SceneManager.LoadScene("Game");
+        Application.Quit();
     }
 }
