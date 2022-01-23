@@ -4,7 +4,7 @@ public class Player : MoveController
 {
     [SerializeField] protected Rigidbody2D rigidbody;
     [SerializeField] protected Animator animator;
-    
+
     protected override void OnStart()
     {
         destination = transform.position;
