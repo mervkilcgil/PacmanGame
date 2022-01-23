@@ -1,8 +1,14 @@
+using System;
+
 public class GameManager
 {
     private static GameManager instance;
     private GameState gameState;
     private int gameScore;
+    public Action OnStartGame;
+    public Action OnEndGame;
+    
+    public GameState GameState => gameState;
 
     public static GameManager Instance
     {
@@ -15,11 +21,24 @@ public class GameManager
             return instance;
         }
     }
+
+    public void StartGame()
+    {
+        gameState = GameState.Playing;
+        gameScore = 0;
+        OnStartGame?.Invoke();
+    }
     
 
     public void IncreaseScore()
     {
         gameScore++;
+    }
+
+    public void GameOver()
+    {
+        gameState = GameState.GameOver;
+        OnEndGame?.Invoke();
     }
 }
 

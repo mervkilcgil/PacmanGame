@@ -1,29 +1,32 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DotSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject dotPrefab;
-    [SerializeField] private List<Transform> corners;
+    [SerializeField] private GameConstants gameConstants;
     private float spawnInterval = 28f;
 
     private void Start()
     {
-        Vector2 spawnPosition = corners[0].position;
-        while(spawnPosition.y > corners[2].position.y && spawnPosition.y <= corners[1].position.y)
+        GameManager.Instance.OnStartGame += StartSpawning;
+    }
+
+    private void StartSpawning()
+    {
+        Vector2 spawnPosition = GameConstants.Instance.GetFirstCorner();
+        while(spawnPosition.y > GameConstants.Instance.GetThirdCorner().y && spawnPosition.y <= GameConstants.Instance.GetSecondCorner().y)
         {
-            while (spawnPosition.x > corners[1].position.x && spawnPosition.x <= corners[0].position.x)
+            while (spawnPosition.x > GameConstants.Instance.GetSecondCorner().x && spawnPosition.x <= GameConstants.Instance.GetFirstCorner().x)
             {
                 if(CanPut(spawnPosition))
                 {
-                    Dot dot = Instantiate(dotPrefab, spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
+                    Dot dot = Instantiate(GameConstants.Instance.GetDotPrefab(), spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
                     dot.IncreaseScore += GameManager.Instance.IncreaseScore;
                 }
                 spawnPosition.x -=spawnInterval;
             }
             spawnPosition.y -= spawnInterval;
-            spawnPosition.x = corners[0].position.x;
+            spawnPosition.x = GameConstants.Instance.GetFirstCorner().x;
         }
     }
     
