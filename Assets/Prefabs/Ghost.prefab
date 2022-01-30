@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2359223117368526537}
   - component: {fileID: 470128524645542156}
   - component: {fileID: 4189046980784103021}
-  - component: {fileID: 5464849265346542343}
-  - component: {fileID: 6462059755973460707}
+  - component: {fileID: 4359572542552130679}
+  - component: {fileID: -3575985930898985336}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -126,29 +126,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!195 &5464849265346542343
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359223117368526538}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.08
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.16
-  m_BaseOffset: 0.08
-  m_WalkableMask: 3
-  m_ObstacleAvoidanceType: 2
---- !u!114 &6462059755973460707
+--- !u!114 &4359572542552130679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,23 +135,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2359223117368526538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Script: {fileID: 11500000, guid: 3519c3e75c5ab8c40b319cac26f800bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 84aa372b4e19a4230b5f91b3d2723a41, type: 2}
+  movespeed: 1
+  intervalTime: 0.1
+  usePathSmooting: 1
+  showPathSmoothing: 1
+--- !u!114 &-3575985930898985336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359223117368526538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2275519bed6a0341acb8d561f7ea99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

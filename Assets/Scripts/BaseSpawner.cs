@@ -9,6 +9,7 @@ public class BaseSpawner : MonoBehaviour
     [SerializeField] private List<Transform> corners;
     private float ghostSpawnInterval = 100f;
     
+    public List<Transform> Corners => corners;
 
     public Vector2 GetFirstCorner()
     {

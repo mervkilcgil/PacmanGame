@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ghost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ghost.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NavMesh-Ghost.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/NavMesh-Ghost.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/New Terrain Layer.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/New Terrain Layer.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502036" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -25,4 +53,10 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
 </project>

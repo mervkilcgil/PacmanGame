@@ -1,38 +1,36 @@
 using System;
+using Astar2DPathFinding.Mika;
 using UnityEngine;
-using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class GhostMove : MonoBehaviour
 {
     [SerializeField] public SoundManager soundManager;
-    private NavMeshAgent agent;
-    [SerializeField] private Transform player;
-
-    public void Start()
+    public GhostSpawner ghostSpawner;
+    private float deltaTime = 0f;
+    private float spawnTime = 5f;
+    public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.Warp(transform.position);
+        this.ghostSpawner = ghostSpawner;
     }
 
-    public void SetPlayer(Transform player)
+    public void FixedUpdate()
     {
-        if (agent == null)
+        deltaTime += Time.fixedDeltaTime;
+        if (deltaTime >= spawnTime && ghostSpawner)
         {
-            agent = GetComponent<NavMeshAgent>();
+            deltaTime = 0f;
+            SetRandomCornerTarget();
         }
-        GetComponent<NavMeshSurface>().BuildNavMesh();
-        agent.Warp(transform.position);
-        this.player = player;
-        InvokeRepeating(nameof(SetTarget), 0f, 3f);
     }
-    private void SetTarget()
+
+    public void SetRandomCornerTarget()
     {
-        if (!agent.isOnNavMesh)
-        {
-            agent.ActivateCurrentOffMeshLink(true);
-        }
-        agent.destination =  player.position;
+        int randomCorner = Random.Range(0, 4);
+        
+        GetComponent<SeekerController>().AddTarget(ghostSpawner.Corners[randomCorner].position);
     }
+    
     public void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player"))
