@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class GhostSpawner : BaseSpawner
@@ -42,7 +43,7 @@ public class GhostSpawner : BaseSpawner
 
     private Vector2 GetValidRandomSpawnLocation()
     {
-        var spawnLocations =GetGhostSpawnLocations();
+        var spawnLocations = GetGhostSpawnLocations();
         int randomIndex = Random.Range(0, spawnLocations.Count);
         return spawnLocations[randomIndex];
     }
