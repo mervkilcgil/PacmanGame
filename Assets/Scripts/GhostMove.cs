@@ -1,39 +1,26 @@
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class GhostMove : MoveController
+public class GhostMove : MonoBehaviour
 {
-    private Vector2 p;
-    protected override void OnStart()
+    [SerializeField] public SoundManager soundManager;
+    private NavMeshAgent agent;
+    [SerializeField] private Transform player; 
+
+    public void Start()
     {
-        destination = transform.position;
-        transform.rotation = Quaternion.Euler(0,0,0);
+        agent = GetComponent<NavMeshAgent>();
     }
 
-    protected override void OnUpdate()
+    public void SetPlayer(Transform player)
     {
-        currPos = transform.position;
-        p = Vector2.MoveTowards(currPos, destination, speed);
-        
+        this.player = player;
+        //InvokeRepeating(nameof(SetTarget), 0f, 3f);
     }
-
-    protected override void Move(Vector2 direction)
+    private void SetTarget()
     {
-        transform.position = p;
-        if(CanGo(direction))
-        {
-            Vector2 moveDir = direction * speed;
-            destination = currPos + moveDir;
-            currPos = p;
-        }
-        else
-        {
-            transform.position = currPos;
-        }
-    }
-
-    protected override Direction GetDirection()
-    {
-        return (Direction)Random.Range(0, 4);
+        agent.destination = player.position;
     }
     public void OnCollisionEnter2D(Collision2D other)
     {

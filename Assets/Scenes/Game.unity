@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15690647}
   - component: {fileID: 15690648}
+  - component: {fileID: 15690649}
   m_Layer: 0
   m_Name: GhostSpawner
   m_TagString: Untagged
@@ -185,6 +186,23 @@ MonoBehaviour:
   - {fileID: 468244270}
   spawnTime: 5
   soundManager: {fileID: 1369742902}
+  player: {fileID: 763997253}
+--- !u!114 &15690649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15690646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5332bc059a6134fe49902f6d59845bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.25
+  weaponRange: 500
+  gunEnd: {fileID: 0}
+  directedAgent: {fileID: 0}
 --- !u!1001 &32665604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,6 +765,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &763997253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7471002099893469015, guid: 7059a78c9eca445338101c7afce02073, type: 3}
+  m_PrefabInstance: {fileID: 7883785074013111198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1369742899
 GameObject:
   m_ObjectHideFlags: 0

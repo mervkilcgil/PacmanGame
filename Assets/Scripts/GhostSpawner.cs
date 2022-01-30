@@ -6,6 +6,7 @@ public class GhostSpawner : BaseSpawner
     
     [SerializeField] private float spawnTime = 5f;
     [SerializeField] private SoundManager soundManager;
+    [SerializeField] private Transform player;
 
     private float deltaTime;
     private void Start()
@@ -34,6 +35,7 @@ public class GhostSpawner : BaseSpawner
         GameObject randomGhost = ghostPrefabs[randomIndex];
         var ghost = Instantiate(randomGhost, GetValidRandomSpawnLocation(), Quaternion.identity).GetComponent<GhostMove>();
         ghost.soundManager = soundManager;
+        ghost.SetPlayer(player);
         
         deltaTime = 0f;
     }
