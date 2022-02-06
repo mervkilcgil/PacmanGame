@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +26,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/90/f6190172/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/f3/ed67c16c/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/1d/a96ae8ec/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Vector2Extension.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +84,7 @@
       <updated>1643554221720</updated>
       <workItem from="1643554224757" duration="3169000" />
       <workItem from="1643906590097" duration="1353000" />
-      <workItem from="1644073380128" duration="3626000" />
+      <workItem from="1644073380128" duration="6408000" />
     </task>
     <servers />
   </component>
@@ -105,56 +109,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DotSpawner.cs</url>
-          <line>13</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/DotSpawner.cs" initialLine="13" containingFunctionPresentation="method 'StartSpawning'">
-            <startOffsets>
-              <option value="244" />
-            </startOffsets>
-            <endOffsets>
-              <option value="312" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>95</line>
+          <line>104</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="93" containingFunctionPresentation="method 'GetClosestColliderPosition'">
             <startOffsets>
-              <option value="2895" />
+              <option value="3126" />
             </startOffsets>
             <endOffsets>
-              <option value="2926" />
+              <option value="3157" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>83</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="83" containingFunctionPresentation="method 'GetPath'">
-            <startOffsets>
-              <option value="2285" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2369" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>78</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="78" containingFunctionPresentation="method 'GetPath'">
-            <startOffsets>
-              <option value="2156" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2197" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

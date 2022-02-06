@@ -19,7 +19,7 @@ public class GhostSpawner : BaseSpawner
 
         int randomIndex = Random.Range(0, ghostPrefabs.Count);
         GameObject randomGhost = ghostPrefabs[randomIndex];
-        var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity).GetComponent<GhostMove>();
+        var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity, transform).GetComponent<GhostMove>();
         ghost.soundManager = soundManager;
         ghost.SetGhostSpawner(this);
     }
