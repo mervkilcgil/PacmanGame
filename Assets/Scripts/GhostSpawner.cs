@@ -10,7 +10,7 @@ public class GhostSpawner : BaseSpawner
 
     protected override void StartSpawning()
     {
-        InvokeRepeating(nameof(SpawnGhost), spawnTime, spawnTime);
+        InvokeRepeating(nameof(SpawnGhost), 0, spawnTime);
 
     }
     private void SpawnGhost()

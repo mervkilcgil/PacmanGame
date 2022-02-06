@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ghost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ghost.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/90/f6190172/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/04/aca364a0/Logger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/f3/ed67c16c/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f039202799bf40c48a1e0c61b1d21d7d13be00/1d/a96ae8ec/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
@@ -84,7 +91,7 @@
       <updated>1643554221720</updated>
       <workItem from="1643554224757" duration="3169000" />
       <workItem from="1643906590097" duration="1353000" />
-      <workItem from="1644073380128" duration="6408000" />
+      <workItem from="1644073380128" duration="9739000" />
     </task>
     <servers />
   </component>
@@ -110,13 +117,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>104</line>
+          <line>106</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="93" containingFunctionPresentation="method 'GetClosestColliderPosition'">
             <startOffsets>
-              <option value="3126" />
+              <option value="3248" />
             </startOffsets>
             <endOffsets>
-              <option value="3157" />
+              <option value="3279" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />

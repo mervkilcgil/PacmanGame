@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 2359223117368526537}
   - component: {fileID: 470128524645542156}
   - component: {fileID: 4189046980784103021}
-  - component: {fileID: 4359572542552130679}
-  - component: {fileID: -3575985930898985336}
+  - component: {fileID: 3683010273810772320}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -99,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 0}
-  player: {fileID: 0}
+  ghostSpawner: {fileID: 0}
+  movespeed: 5
 --- !u!61 &4189046980784103021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,31 +126,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &4359572542552130679
-MonoBehaviour:
+--- !u!50 &3683010273810772320
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2359223117368526538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3519c3e75c5ab8c40b319cac26f800bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movespeed: 1
-  intervalTime: 0.1
-  usePathSmooting: 1
-  showPathSmoothing: 1
---- !u!114 &-3575985930898985336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2359223117368526538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2275519bed6a0341acb8d561f7ea99c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

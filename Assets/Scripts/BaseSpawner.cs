@@ -9,12 +9,14 @@ public class BaseSpawner : MonoBehaviour
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private List<GameObject> ghostPrefabs;
     [SerializeField] private List<Transform> corners;
+    private List<Vector2> cornerLocs;
     private float ghostSpawnInterval = 100f;
     
-    public List<Transform> Corners => corners;
+    public List<Vector2> Corners => cornerLocs;
     
     public void Start()
     {
+        cornerLocs = corners.Select(corner => new Vector2(corner.position.x, corner.position.y)).ToList();
         GameManager.Instance.OnStartGame += StartSpawning;
     }
     protected virtual void StartSpawning()
@@ -23,22 +25,22 @@ public class BaseSpawner : MonoBehaviour
     }
     public Vector2 GetFirstCorner()
     {
-        return corners[0].position;
+        return cornerLocs[0];
     }
     
     public Vector2 GetSecondCorner()
     {
-        return corners[1].position;
+        return cornerLocs[1];
     }
     
     public Vector2 GetThirdCorner()
     {
-        return corners[2].position;
+        return cornerLocs[2];
     }
     
     public Vector2 GetFourthCorner()
     {
-        return corners[3].position;
+        return cornerLocs[3];
     }
     
     public GameObject GetDotPrefab()
