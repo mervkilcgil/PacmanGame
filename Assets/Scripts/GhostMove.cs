@@ -1,8 +1,8 @@
-using System;
 using System.Threading.Tasks;
 using Astar2DPathFinding.Mika;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class GhostMove : MonoBehaviour, Pathfinding
 {
@@ -13,39 +13,42 @@ public class GhostMove : MonoBehaviour, Pathfinding
     private Vector2 endPos;
     private Vector2[] pathArray;
     private int currentPathIndex;
-    private float movespeed = 1;
+    private float movespeed = 10;
     private Vector2 endPosition;
+    private IEnumerator currentPath;
 
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
         this.ghostSpawner = ghostSpawner;
         SetRandomCornerTarget();
-        InvokeRepeating(nameof(Move), 0f, 1f);
     }
-    
-    public void AddTarget(Vector2 target)
+
+    private void AddTarget(Vector2 target)
     {
         FindPath(transform, target);
     }
-    private void Move()
+
+    private IEnumerator MovePath(Vector2[] pathArray)
     {
         if (pathArray == null)
         {
-            return;
+            yield break;
         }
-
-        if (currentPathIndex < pathArray.Length - 1)
+        
+        for (int j = 0; j < pathArray.Length - 1; j++)
         {
-            Vector2 target_pos = endPos;
-            Vector2 my_pos = transform.position;
-            target_pos.x = target_pos.x - my_pos.x;
-            target_pos.y = target_pos.y - my_pos.y;
-            float angle = Mathf.Atan2(target_pos.y, target_pos.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-
-            transform.position =
-                Vector2.MoveTowards(my_pos, pathArray[currentPathIndex], Time.deltaTime*movespeed);
-            currentPathIndex++;
+            Debug.DrawLine(pathArray[j], pathArray[j + 1], Color.white,
+                10);
+        }
+        for (int i = 0; i < pathArray.Length; i++)
+        {
+            while ((Vector2)transform.position != pathArray[i])
+            {
+                Vector2 target_pos = pathArray[i];
+                var speed = Time.deltaTime * movespeed;
+                transform.position = Vector2.MoveTowards(transform.position, target_pos, speed);
+                yield return null;
+            }
         }
     }
 
@@ -60,7 +63,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
         return taskCompletionSource.Task;
     }
 
-    public async void FindPath(Transform _seeker, Vector2 _endPos)
+    private async void FindPath(Transform _seeker, Vector2 _endPos)
     {
         endPos = _endPos;
 
@@ -88,6 +91,13 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
     public void OnPathFound(Vector2[] newPath)
     {
+        if (currentPath != null)
+        {
+            StopCoroutine(currentPath);
+        }
+
+        currentPath = MovePath(newPath);
         pathArray = newPath;
+        StartCoroutine(currentPath);
     }
 }

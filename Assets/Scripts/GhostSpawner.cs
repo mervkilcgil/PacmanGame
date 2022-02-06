@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 public class GhostSpawner : BaseSpawner
 {
     
-    [SerializeField] private float spawnTime = 5f;
+    [SerializeField] private float spawnTime = 15f;
     [SerializeField] private SoundManager soundManager;
     
 

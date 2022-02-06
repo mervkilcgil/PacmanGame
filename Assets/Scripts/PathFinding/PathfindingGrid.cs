@@ -128,6 +128,7 @@ namespace Astar2DPathFinding.Mika
                     int movementPenalty = 0;
 
                     Collider2D[] hit = Physics2D.OverlapCircleAll(worldPoint, nodeRadius, walkableMask);
+                    //RaycastHit2D hits = Physics2D.CircleCast(worldPoint, nodeRadius);
                     for (int i = 0; i < hit.Length; i++)
                     {
                         int newPenalty = 0;
@@ -140,7 +141,10 @@ namespace Astar2DPathFinding.Mika
                             movementPenalty = newPenalty;
                         }
                     }
-
+                    /*if (hits.collider.CompareTag("Wall"))
+                    {
+                        nodeType = NodeType.obstacle;
+                    }*/
                     grid[x, y] = new Node(nodeType, worldPoint, x, y, movementPenalty);
                 }
             }
@@ -159,8 +163,7 @@ namespace Astar2DPathFinding.Mika
             print("Walk: " + walk + " Obs: " + obs + "Time took create the grid" + sw.Elapsed);
             SetAreas();
         }
-
-
+        
         int currentIDThing = 1;
 
         public void SetAreas()
