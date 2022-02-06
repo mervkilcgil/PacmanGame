@@ -955,10 +955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 659193225}
     m_Modifications:
-    - target: {fileID: 313509641, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
-      propertyPath: m_EnableTreeColliders
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6809878384482717168, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
       propertyPath: m_Name
       value: Maze

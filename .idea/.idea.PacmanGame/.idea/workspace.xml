@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Vector2Extension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DotSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DotSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +80,7 @@
       <updated>1643554221720</updated>
       <workItem from="1643554224757" duration="3169000" />
       <workItem from="1643906590097" duration="1353000" />
-      <workItem from="1644073380128" duration="3021000" />
+      <workItem from="1644073380128" duration="3626000" />
     </task>
     <servers />
   </component>
@@ -126,13 +119,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>93</line>
+          <line>95</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="93" containingFunctionPresentation="method 'GetClosestColliderPosition'">
             <startOffsets>
-              <option value="2709" />
+              <option value="2895" />
             </startOffsets>
             <endOffsets>
-              <option value="2740" />
+              <option value="2926" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
@@ -142,13 +135,26 @@
           <line>83</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="83" containingFunctionPresentation="method 'GetPath'">
             <startOffsets>
-              <option value="2247" />
+              <option value="2285" />
             </startOffsets>
             <endOffsets>
-              <option value="2332" />
+              <option value="2369" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
+          <line>78</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="78" containingFunctionPresentation="method 'GetPath'">
+            <startOffsets>
+              <option value="2156" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2197" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

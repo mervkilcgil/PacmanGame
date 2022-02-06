@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class GhostSpawner : BaseSpawner
@@ -7,26 +6,13 @@ public class GhostSpawner : BaseSpawner
     
     [SerializeField] private float spawnTime = 5f;
     [SerializeField] private SoundManager soundManager;
+    
 
-    private float deltaTime;
-    private void Start()
+    protected override void StartSpawning()
     {
-        deltaTime = 0f;
-    }
+        InvokeRepeating(nameof(SpawnGhost), spawnTime, spawnTime);
 
-    private void FixedUpdate()
-    {
-        if(GameManager.Instance.GameState == GameState.Playing)
-        {
-            deltaTime += Time.fixedDeltaTime;
-            if (deltaTime >= spawnTime)
-            {
-                deltaTime = 0f;
-                SpawnGhost();
-            }
-        }
     }
-
     private void SpawnGhost()
     {
         var ghostPrefabs = GetGhostPrefabs();
@@ -36,7 +22,6 @@ public class GhostSpawner : BaseSpawner
         var ghost = Instantiate(randomGhost, GetValidRandomSpawnLocation(), Quaternion.identity).GetComponent<GhostMove>();
         ghost.soundManager = soundManager;
         ghost.SetGhostSpawner(this);
-        deltaTime = 0f;
     }
 
     private Vector2 GetValidRandomSpawnLocation()

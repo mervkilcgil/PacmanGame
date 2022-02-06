@@ -3,15 +3,11 @@ using UnityEngine;
 public class DotSpawner : BaseSpawner
 {
     private float spawnInterval = 28f;
+    
 
-    private void Start()
+    protected override void StartSpawning()
     {
-        GameManager.Instance.OnStartGame += StartSpawning;
-    }
-
-    private void StartSpawning()
-    {
-        Vector2 spawnPosition = GetPath(GetFirstCorner(), GetThirdCorner());
+        Vector2 spawnPosition = GetPath(GetFirstCorner(), GetFourthCorner());
         while(spawnPosition.y > GetThirdCorner().y && spawnPosition.y <= GetSecondCorner().y)
         {
             while (spawnPosition.x > GetSecondCorner().x && spawnPosition.x <= GetFirstCorner().x)

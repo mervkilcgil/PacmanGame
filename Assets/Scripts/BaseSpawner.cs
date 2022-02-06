@@ -11,7 +11,15 @@ public class BaseSpawner : MonoBehaviour
     private float ghostSpawnInterval = 100f;
     
     public List<Transform> Corners => corners;
-
+    
+    public void Start()
+    {
+        GameManager.Instance.OnStartGame += StartSpawning;
+    }
+    protected virtual void StartSpawning()
+    {
+        
+    }
     public Vector2 GetFirstCorner()
     {
         return corners[0].position;
@@ -82,8 +90,10 @@ public class BaseSpawner : MonoBehaviour
     protected Vector2 GetPathAlong(Vector2 path, Vector2 dir)
     {
         RaycastHit2D hit = Physics2D.Raycast(path, dir.PerpendicularClockwise().normalized);
+        Debug.DrawRay(path, dir.PerpendicularClockwise(), Color.red, Mathf.Infinity, false);
         Vector2 upperWall = hit ? hit.point : path;
         RaycastHit2D hit2 = Physics2D.Raycast(path, dir.PerpendicularCounterClockwise().normalized);
+        Debug.DrawRay(path, dir.PerpendicularCounterClockwise(), Color.yellow, Mathf.Infinity, false);
         Vector2 lowerWall = hit2 ? hit2.point : path;
         
         return upperWall.GetMiddlePoint(lowerWall);

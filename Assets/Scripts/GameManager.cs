@@ -43,6 +43,11 @@ public class GameManager
         }
     }
 
+    public GameManager()
+    {
+        gameState = GameState.NotStarted;
+    }
+
     public void StartGame()
     {
         gameState = GameState.Playing;
@@ -72,6 +77,7 @@ public class GameManager
 
 public enum GameState
 {
+    NotStarted,
     Playing,
     GameOver,
     Win
