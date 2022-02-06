@@ -10,12 +10,10 @@ public class GhostMove : MonoBehaviour, Pathfinding
     public GhostSpawner ghostSpawner;
     private float deltaTime = 5f;
     private float spawnTime = 5f;
-    private Vector2 endPos;
-    private Vector2[] pathArray;
-    private int currentPathIndex;
     private float movespeed = 10;
     private Vector2 endPosition;
     private IEnumerator currentPath;
+    private int currentTargetCorner = -1;
 
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
@@ -50,6 +48,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
                 yield return null;
             }
         }
+        SetRandomCornerTarget();
     }
 
     private Task<Vector3[]> SearchPathRequest(Pathfinding requester, Vector2 startPos, Vector2 endPos)
@@ -65,8 +64,6 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
     private async void FindPath(Transform _seeker, Vector2 _endPos)
     {
-        endPos = _endPos;
-
         if (_endPos != endPosition)
         {
             endPosition = _endPos;
@@ -74,11 +71,15 @@ public class GhostMove : MonoBehaviour, Pathfinding
         }
     }
 
-    public void SetRandomCornerTarget()
+    private void SetRandomCornerTarget()
     {
         int randomCorner = Random.Range(0, 4);
-
-        AddTarget(ghostSpawner.Corners[randomCorner]);
+        while (currentTargetCorner == randomCorner)
+        {
+            randomCorner = Random.Range(0, 4);
+        }
+        currentTargetCorner = randomCorner;
+        AddTarget(ghostSpawner.Corners[currentTargetCorner]);
     }
 
     public void OnCollisionEnter2D(Collision2D other)
@@ -97,7 +98,6 @@ public class GhostMove : MonoBehaviour, Pathfinding
         }
 
         currentPath = MovePath(newPath);
-        pathArray = newPath;
         StartCoroutine(currentPath);
     }
 }

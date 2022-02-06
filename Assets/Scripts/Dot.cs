@@ -17,6 +17,11 @@ public class Dot : MonoBehaviour
             Destroy(gameObject);
             GameManager.Instance.DotCount--;
         }
+        else if (other.gameObject.CompareTag("Ghost"))
+        {
+            Destroy(gameObject);
+            GameManager.Instance.DotCount--;
+        }
     }
 
     private void OnDestroy()
