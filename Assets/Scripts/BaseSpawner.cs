@@ -8,6 +8,7 @@ public class BaseSpawner : MonoBehaviour
     [SerializeField] private GameObject dotPrefab;
     [SerializeField] private List<GameObject> ghostPrefabs;
     [SerializeField] private List<Transform> corners;
+    [SerializeField] private Grid grid;
     private float ghostSpawnInterval = 100f;
     
     public List<Transform> Corners => corners;
