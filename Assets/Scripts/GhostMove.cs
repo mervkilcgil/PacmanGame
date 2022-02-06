@@ -7,7 +7,7 @@ public class GhostMove : MonoBehaviour
 {
     [SerializeField] public SoundManager soundManager;
     public GhostSpawner ghostSpawner;
-    private float deltaTime = 0f;
+    private float deltaTime = 5f;
     private float spawnTime = 5f;
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
@@ -16,12 +16,12 @@ public class GhostMove : MonoBehaviour
 
     public void FixedUpdate()
     {
-        deltaTime += Time.fixedDeltaTime;
         if (deltaTime >= spawnTime && ghostSpawner)
         {
             deltaTime = 0f;
             SetRandomCornerTarget();
         }
+        deltaTime += Time.fixedDeltaTime;
     }
 
     public void SetRandomCornerTarget()

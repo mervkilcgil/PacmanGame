@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Astar2DPathFinding.Mika
@@ -33,7 +32,7 @@ namespace Astar2DPathFinding.Mika
 
             else if (_seeker == null)
             {
-                UnityEngine.Debug.LogError("Missing seeker!", this);
+                Debug.LogError("Missing seeker!", this);
                 return;
             }
 

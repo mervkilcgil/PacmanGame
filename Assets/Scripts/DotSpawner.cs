@@ -11,7 +11,7 @@ public class DotSpawner : BaseSpawner
 
     private void StartSpawning()
     {
-        Vector2 spawnPosition = GetFirstCorner();
+        Vector2 spawnPosition = GetPath(GetFirstCorner(), GetThirdCorner());
         while(spawnPosition.y > GetThirdCorner().y && spawnPosition.y <= GetSecondCorner().y)
         {
             while (spawnPosition.x > GetSecondCorner().x && spawnPosition.x <= GetFirstCorner().x)
@@ -26,6 +26,7 @@ public class DotSpawner : BaseSpawner
             }
             spawnPosition.y -= spawnInterval;
             spawnPosition.x = GetFirstCorner().x;
+            spawnPosition = GetPathAlong(spawnPosition, spawnPosition.normalized);
         }
         Debug.Log(GameManager.Instance.DotCount);
     }
@@ -37,6 +38,7 @@ public class DotSpawner : BaseSpawner
             return true;
         return !hit.collider.CompareTag("Wall") && !hit.collider.CompareTag("Dot") && !hit.collider.CompareTag("Player");
     }
+    
 }
 
 
