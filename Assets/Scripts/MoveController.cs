@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class MoveController : MonoBehaviour
@@ -7,8 +6,7 @@ public class MoveController : MonoBehaviour
     protected int speed = 2;
     protected Vector2 destination;
     protected Vector2 currPos;
-    [SerializeField] public SoundManager soundManager;
-    
+
     protected void Start()
     {
         OnStart();
@@ -78,8 +76,6 @@ public class MoveController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Linecast(newPos, currPos);
         if(hit.collider == null)
             return true;
-        if(hit.collider.CompareTag("Wall"))
-            soundManager.PlaySound();
         return !hit.collider.CompareTag("Wall");
     }
     

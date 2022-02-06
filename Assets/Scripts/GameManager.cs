@@ -56,22 +56,25 @@ public class GameManager
     }
 
 
-    public void IncreaseScore()
+    public void IncreaseScore(int score = 1)
     {
-        gameScore++;
+        gameScore += score;
     }
 
     public void GameOver()
     {
         gameState = GameState.GameOver;
         OnEndGame?.Invoke();
-        //SceneManager.LoadScene("Game");
+        OnStartGame = null;
+        OnEndGame = null;
     }
 
     public void OnWin()
     {
         gameState = GameState.Win;
         OnWinGame?.Invoke();
+        OnStartGame = null;
+        OnEndGame = null;
     }
 }
 

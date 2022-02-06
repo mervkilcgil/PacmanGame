@@ -6,7 +6,6 @@ using System.Collections;
 
 public class GhostMove : MonoBehaviour, Pathfinding
 {
-    [SerializeField] public SoundManager soundManager;
     public GhostSpawner ghostSpawner;
     private float deltaTime = 5f;
     private float spawnTime = 5f;
@@ -28,7 +27,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
     private IEnumerator MovePath(Vector2[] pathArray)
     {
-        if (pathArray == null)
+        if (pathArray == null || GameManager.Instance.GameState != GameState.Playing)
         {
             yield break;
         }
@@ -84,9 +83,23 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            GameManager.Instance.GameOver();
+
+            if (other.gameObject.CompareTag("Player"))
+            {
+                var player = other.gameObject.GetComponent<Player>();
+                if (player.CanEat(transform.position))
+                {
+                    SoundManager.Instance.PlayEatGhost();
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    SoundManager.Instance.PlayDeath();
+                    GameManager.Instance.GameOver();
+                }
+            }
         }
     }
 

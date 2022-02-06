@@ -1,8 +1,5 @@
-using UnityEngine;
-
 public class StartPanel : Panel
 {
-    [SerializeField]private SoundManager soundManager;
     public void Start()
     {
         OnStartPanel();
@@ -11,19 +8,19 @@ public class StartPanel : Panel
     {
         base.OnStartPanel();
         primaryButton.onClick.AddListener(OnClickStartButton);
-        soundManager.PlayMusic();
+        SoundManager.Instance.PlayMusic();
     
     }
 
     public override void Open()
     {
         base.Open();
-        
     }
 
     public void OnClickStartButton()
     {
         GameManager.Instance.StartGame();
         Close();
+        SoundManager.Instance.StopMusic();
     }
 }

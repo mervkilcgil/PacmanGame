@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7883785074013111201}
   - component: {fileID: 4757205490827646315}
   - component: {fileID: 8019796481507671536}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2ef41261eac4aa9a0787ac99140db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
   rigidbody: {fileID: 7883785074013111200}
   animator: {fileID: 2303064021997570958}

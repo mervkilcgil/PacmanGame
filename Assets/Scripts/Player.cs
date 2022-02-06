@@ -4,7 +4,7 @@ public class Player : MoveController
 {
     [SerializeField] protected Rigidbody2D rigidbody;
     [SerializeField] protected Animator animator;
-
+    private Vector2 moveDir;
     protected override void OnStart()
     {
         destination = transform.position;
@@ -15,20 +15,32 @@ public class Player : MoveController
     
     protected override void OnUpdate()
     {
-        currPos = transform.position;
-        Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
-        rigidbody.MovePosition(p);
-        transform.rotation = Quaternion.Euler(0,0,0);
+        if (GameManager.Instance.GameState == GameState.Playing)
+        {
+            currPos = transform.position;
+            Vector2 p = Vector2.MoveTowards(currPos, destination, speed);
+            rigidbody.MovePosition(p);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
-    
+
+    public bool CanEat(Vector2 pos)
+    {
+        return false;
+    }
     protected override void Move(Vector2 direction)
     {
         if(CanGo(direction))
         {
-            Vector2 moveDir = direction * speed;
+            moveDir = direction * speed;
             destination = currPos + moveDir;
             animator.SetFloat("DirX", moveDir.x);
             animator.SetFloat("DirY", moveDir.y);
         }
+    }
+
+    public void EatGhost()
+    {
+        GameManager.Instance.IncreaseScore(100);
     }
 }

@@ -33,5 +33,6 @@ public class EndPanel : Panel
     {
         yield return new WaitForSecondsRealtime(1f);
         Application.Quit();
+        SceneManager.LoadScene("Game");
     }
 }

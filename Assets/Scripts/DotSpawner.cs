@@ -8,6 +8,7 @@ public class DotSpawner : BaseSpawner
     protected override void StartSpawning()
     {
         return;
+        //TODO: Implement dot spawning logic here
         Vector2 spawnPosition = GetPath(GetFirstCorner(), GetFourthCorner());
         while(spawnPosition.y > GetThirdCorner().y && spawnPosition.y <= GetSecondCorner().y)
         {
@@ -16,7 +17,7 @@ public class DotSpawner : BaseSpawner
                 if(CanPut(spawnPosition))
                 {
                     Dot dot = Instantiate(GetDotPrefab(), spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
-                    dot.IncreaseScore += GameManager.Instance.IncreaseScore;
+                    dot.IncreaseScore += ()=>GameManager.Instance.IncreaseScore(1);
                     GameManager.Instance.DotCount++;
                 }
                 spawnPosition.x -=spawnInterval;
