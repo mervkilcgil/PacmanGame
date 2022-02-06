@@ -7,6 +7,7 @@ public class DotSpawner : BaseSpawner
 
     protected override void StartSpawning()
     {
+        return;
         Vector2 spawnPosition = GetPath(GetFirstCorner(), GetFourthCorner());
         while(spawnPosition.y > GetThirdCorner().y && spawnPosition.y <= GetSecondCorner().y)
         {
