@@ -16,7 +16,7 @@ public class Dot : MonoBehaviour
         if (hits == null)
             return;
         if (hits.Length > 0) Destroy(gameObject);
-        IncreaseScore += ()=>GameManager.Instance.IncreaseScore(1);
+        IncreaseScore += ()=>GameManager.Instance.EatPellet();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

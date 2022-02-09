@@ -1,15 +1,17 @@
+using System;
 using System.Threading.Tasks;
 using Astar2DPathFinding.Mika;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GhostMove : MonoBehaviour, Pathfinding
 {
     public GhostSpawner ghostSpawner;
     private float deltaTime = 5f;
     private float spawnTime = 5f;
-    private float movespeed = 10;
+    private float movespeed = 25;
     private Vector2 endPosition;
     private IEnumerator currentPath;
     private int currentTargetCorner = -1;
@@ -17,7 +19,13 @@ public class GhostMove : MonoBehaviour, Pathfinding
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
         this.ghostSpawner = ghostSpawner;
+        GameManager.Instance.OnRestartGame += ResetGhost;
         SetRandomCornerTarget();
+    }
+
+    private void ResetGhost()
+    {
+        Destroy(this.gameObject);
     }
 
     private void AddTarget(Vector2 target)
@@ -44,6 +52,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
                 Vector2 target_pos = pathArray[i];
                 var speed = Time.deltaTime * movespeed;
                 transform.position = Vector2.MoveTowards(transform.position, target_pos, speed);
+                transform.rotation = Quaternion.identity;
                 yield return null;
             }
         }
@@ -72,13 +81,16 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
     private void SetRandomCornerTarget()
     {
-        int randomCorner = Random.Range(0, 4);
+        List<Vector2> targets = new List<Vector2>(ghostSpawner.Corners.Count + 1);
+        ghostSpawner.Corners.ForEach(i=> targets.Add(i));
+        targets.Add(GameManager.Instance.PlayerPosition);
+        int randomCorner = Random.Range(1, 5);
         while (currentTargetCorner == randomCorner)
         {
-            randomCorner = Random.Range(0, 4);
+            randomCorner = Random.Range(1, 5);
         }
         currentTargetCorner = randomCorner;
-        AddTarget(ghostSpawner.Corners[currentTargetCorner]);
+        AddTarget(targets[currentTargetCorner]);
     }
 
     public void OnCollisionEnter2D(Collision2D other)
@@ -96,8 +108,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
                 }
                 else
                 {
-                    SoundManager.Instance.PlayDeath();
-                    GameManager.Instance.GameOver();
+                    GameManager.Instance.OnDeath();
                 }
             }
         }
@@ -112,5 +123,10 @@ public class GhostMove : MonoBehaviour, Pathfinding
 
         currentPath = MovePath(newPath);
         StartCoroutine(currentPath);
+    }
+
+    public void OnDestroy()
+    {
+        GameManager.Instance.OnRestartGame -= ResetGhost;
     }
 }

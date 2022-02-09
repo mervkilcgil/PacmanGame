@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager
@@ -8,8 +9,16 @@ public class GameManager
     private int gameScore;
     public Action OnStartGame;
     public Action OnEndGame;
+    public Action OnRestartGame;
     public Action OnWinGame;
     private int dotCount;
+    private int eatenGhostCount;
+    private int lives;
+    private int highScore;
+    private Player player;
+    public Vector2 PlayerPosition { get { return player.transform.position; } }
+
+    public Player Player { set=> player = value; }
     public int DotCount
     {
         get => dotCount;
@@ -39,6 +48,7 @@ public class GameManager
             {
                 instance = new GameManager();
             }
+
             return instance;
         }
     }
@@ -46,22 +56,78 @@ public class GameManager
     public GameManager()
     {
         gameState = GameState.NotStarted;
+        highScore = PlayerPrefs.GetInt("PacManGameHighScore", 0);
     }
 
     public void StartGame()
     {
         gameState = GameState.Playing;
         gameScore = 0;
+        eatenGhostCount = 0;
+        lives = 3;
+        ScoreArea.Instance.SetHighScore(highScore);
+        ScoreArea.Instance.SetScore(gameScore);
+        ScoreArea.Instance.SetLives(lives);
         OnStartGame?.Invoke();
     }
 
-
-    public void IncreaseScore(int score = 1)
+    public void EatPellet()
     {
-        gameScore += score;
+        IncreaseScore(10);
     }
 
-    public void GameOver()
+    public void EatPowerPellet()
+    {
+        IncreaseScore(50);
+    }
+
+    public void EatGhost()
+    {
+        eatenGhostCount++;
+        IncreaseScore((int)Math.Pow(2, eatenGhostCount));
+    }
+
+    private void IncreaseScore(int score)
+    {
+        gameScore += score;
+        ScoreArea.Instance.SetScore(gameScore);
+        if (gameScore >= highScore)
+        {
+            highScore = gameScore;
+            PlayerPrefs.SetInt("PacManGameHighScore", highScore);
+            ScoreArea.Instance.SetHighScore(highScore);
+        }
+        if (score >= 10000)
+            IncreaseLife();
+    }
+
+    private void IncreaseLife()
+    {
+        lives++;
+        ScoreArea.Instance.SetLives(lives);
+    }
+
+    private void DecreaseLife()
+    {
+        lives--;
+        ScoreArea.Instance.SetLives(lives);
+        if (lives == 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            OnRestartGame?.Invoke();
+        }
+    }
+
+    public void OnDeath()
+    {
+        SoundManager.Instance.PlayDeath();
+        DecreaseLife();
+    }
+
+    private void GameOver()
     {
         gameState = GameState.GameOver;
         OnEndGame?.Invoke();

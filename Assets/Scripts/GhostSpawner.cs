@@ -4,21 +4,22 @@ using Random = UnityEngine.Random;
 public class GhostSpawner : BaseSpawner
 {
     
-    [SerializeField] private float spawnTime = 15f;
-
+    private int maxGhostCount = 4;
+    private int ghostIndex;
 
     protected override void StartSpawning()
     {
-        InvokeRepeating(nameof(SpawnGhost), 0, spawnTime);
-
+        SpawnGhost();
     }
     private void SpawnGhost()
     {
-        var ghostPrefabs = GetGhostPrefabs();
-
-        int randomIndex = Random.Range(0, ghostPrefabs.Count);
-        GameObject randomGhost = ghostPrefabs[randomIndex];
-        var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity, transform).GetComponent<GhostMove>();
-        ghost.SetGhostSpawner(this);
+        for (int i = 0; i < maxGhostCount; i++)
+        {
+            var ghostPrefabs = GetGhostPrefabs();
+            GameObject randomGhost = ghostPrefabs[i];
+            var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity, transform).GetComponent<GhostMove>();
+            ghost.SetGhostSpawner(this);
+        }
+        
     }
 }

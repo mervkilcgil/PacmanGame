@@ -373,7 +373,7 @@ namespace Astar2DPathFinding.Mika
                 }
 
                 // right
-                if (InBounds(centreY + radius, horizontalSearchY))
+                if (InBounds(centreX + radius, horizontalSearchY))
                 {
                     if (grid[centreX + radius, horizontalSearchY].walkable == NodeType.walkable &&
                         grid[centreX + radius, horizontalSearchY].gridAreaID == nodeArea)
@@ -383,7 +383,7 @@ namespace Astar2DPathFinding.Mika
                 }
 
                 // left
-                if (InBounds(centreY - radius, horizontalSearchY))
+                if (InBounds(centreX - radius, horizontalSearchY))
                 {
                     if (grid[centreX - radius, horizontalSearchY].walkable == NodeType.walkable &&
                         grid[centreX - radius, horizontalSearchY].gridAreaID == nodeArea)

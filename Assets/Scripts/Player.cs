@@ -5,14 +5,28 @@ public class Player : MoveController
     [SerializeField] protected Rigidbody2D rigidbody;
     [SerializeField] protected Animator animator;
     private Vector2 moveDir;
+    private Vector2 startPos;
+
+    public void Start()
+    {
+        GameManager.Instance.Player = this;
+    }
     protected override void OnStart()
     {
+        startPos = transform.position;
         destination = transform.position;
         transform.rotation = Quaternion.Euler(0,0,0);
         animator.SetFloat("DirX", 0);
         animator.SetFloat("DirY", 0);
+        GameManager.Instance.OnRestartGame += OnRestartGame;
     }
-    
+
+    private void OnRestartGame()
+    {
+        transform.position = startPos;
+        destination = transform.position;
+    }
+
     protected override void OnUpdate()
     {
         if (GameManager.Instance.GameState == GameState.Playing)
@@ -41,6 +55,6 @@ public class Player : MoveController
 
     public void EatGhost()
     {
-        GameManager.Instance.IncreaseScore(100);
+        GameManager.Instance.EatGhost();
     }
 }

@@ -17,7 +17,7 @@ public class DotSpawner : BaseSpawner
                 if(CanPut(spawnPosition))
                 {
                     Dot dot = Instantiate(GetDotPrefab(), spawnPosition, Quaternion.identity, transform).GetComponent<Dot>();
-                    dot.IncreaseScore += ()=>GameManager.Instance.IncreaseScore(1);
+                    dot.IncreaseScore += ()=>GameManager.Instance.EatPellet();
                     GameManager.Instance.DotCount++;
                 }
                 spawnPosition.x -=spawnInterval;
