@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
-    
-    protected int speed = 2;
+    protected float speed = 3.5f;
     protected Vector2 destination;
     protected Vector2 currPos;
     protected Vector2 direction;

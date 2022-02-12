@@ -11,7 +11,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
     public GhostSpawner ghostSpawner;
     private float deltaTime = 5f;
     private float spawnTime = 5f;
-    private float movespeed = 25;
+    private float movespeed = 40;
     private Vector2 endPosition;
     private IEnumerator currentPath;
     private int currentTargetCorner = -1;
