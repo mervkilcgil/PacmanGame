@@ -183,6 +183,36 @@ MonoBehaviour:
   - {fileID: 1065008992}
   - {fileID: 1605155831}
   - {fileID: 2115311077}
+--- !u!1 &60549564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60549565}
+  m_Layer: 0
+  m_Name: RightTeleportPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60549565
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60549564}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 229, y: 15.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 653429196}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &169488939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5876868755148212522, guid: 982c7e2f266594d109a7408fdbe98ba5, type: 3}
@@ -588,6 +618,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8126d9d0fd51945be9004dc9747ad7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1602922772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602922773}
+  m_Layer: 0
+  m_Name: LeftTeleportPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1602922773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602922772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -229, y: 15.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 653429196}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1605155831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4870525223269273129, guid: 982c7e2f266594d109a7408fdbe98ba5, type: 3}
@@ -724,9 +784,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 659193225}
     m_Modifications:
+    - target: {fileID: 515544668018930762, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8926239
+      objectReference: {fileID: 0}
+    - target: {fileID: 515544668018930762, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Size.y
+      value: 48.28917
+      objectReference: {fileID: 0}
+    - target: {fileID: 515544668018930762, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Offset.x
+      value: 209.3146
+      objectReference: {fileID: 0}
+    - target: {fileID: 515544668018930762, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Offset.y
+      value: 15.989418
+      objectReference: {fileID: 0}
     - target: {fileID: 6809878384482717168, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
       propertyPath: m_Name
       value: Maze
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465297481997795238, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2636108
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465297481997795238, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+      propertyPath: m_Offset.x
+      value: -209.50009
       objectReference: {fileID: 0}
     - target: {fileID: 8593822749538380227, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
       propertyPath: m_RootOrder
@@ -946,6 +1030,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8019796481507671536, guid: 7059a78c9eca445338101c7afce02073, type: 3}
+      propertyPath: leftTunnel
+      value: 
+      objectReference: {fileID: 1602922773}
+    - target: {fileID: 8019796481507671536, guid: 7059a78c9eca445338101c7afce02073, type: 3}
+      propertyPath: rightTunnel
+      value: 
+      objectReference: {fileID: 60549565}
     - target: {fileID: 8019796481507671536, guid: 7059a78c9eca445338101c7afce02073, type: 3}
       propertyPath: soundManager
       value: 

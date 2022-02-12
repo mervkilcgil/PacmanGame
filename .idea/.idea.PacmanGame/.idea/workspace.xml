@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Maze.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,17 +154,17 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs</url>
-          <line>18</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/BaseSpawner.cs" initialLine="18" containingFunctionPresentation="method 'Start'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Player.cs</url>
+          <line>69</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" initialLine="69" containingFunctionPresentation="method 'OnTriggerEnter2D'">
             <startOffsets>
-              <option value="496" />
+              <option value="2024" />
             </startOffsets>
             <endOffsets>
-              <option value="594" />
+              <option value="2071" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="39" />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -6,10 +6,13 @@ public class Player : MoveController
     [SerializeField] protected Animator animator;
     private Vector2 moveDir;
     private Vector2 startPos;
+    [SerializeField] private Transform rightTunnel, leftTunnel;
+    private Vector2 tunnelDir;
 
     public void Start()
     {
         GameManager.Instance.Player = this;
+        tunnelDir = Vector2.zero;
     }
     protected override void OnStart()
     {
@@ -61,9 +64,21 @@ public class Player : MoveController
             Debug.Log("Can't go there");
         }
     }
-
-    public void EatGhost()
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        GameManager.Instance.EatGhost();
+        if (direction == tunnelDir) return;
+        if (other.gameObject.CompareTag("RightTunnel"))
+        {
+            transform.position = leftTunnel.position;
+            tunnelDir = direction;
+        }
+        else if(other.gameObject.CompareTag("LeftTunnel"))
+        {
+            transform.position = rightTunnel.position;
+            tunnelDir = direction;
+        }
+        
     }
+    
 }

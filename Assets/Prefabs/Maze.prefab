@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 7465297481997795238}
   m_Layer: 0
   m_Name: LeftTunnel
-  m_TagString: Tunnel
+  m_TagString: LeftTunnel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,7 +273,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -225.8854, y: 15.989418}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 515544668018930762}
   m_Layer: 0
   m_Name: RightTunnel
-  m_TagString: Tunnel
+  m_TagString: RightTunnel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,7 +601,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 225.8854, y: 15.767395}

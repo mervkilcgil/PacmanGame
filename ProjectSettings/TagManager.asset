@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Ghost
   - Tunnel
+  - RightTunnel
+  - LeftTunnel
   layers:
   - Default
   - TransparentFX
