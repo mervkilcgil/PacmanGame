@@ -15,17 +15,27 @@ public class GhostMove : MonoBehaviour, Pathfinding
     private Vector2 endPosition;
     private IEnumerator currentPath;
     private int currentTargetCorner = -1;
+    private Vector2 tunnelDir;
+    private Vector2 direction;
+    private Vector2 startPos;
 
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
         this.ghostSpawner = ghostSpawner;
+        GameManager.Instance.OnEndGame += DestroyGhost;
         GameManager.Instance.OnRestartGame += ResetGhost;
+        tunnelDir = Vector2.zero;
+        startPos = new Vector2(transform.position.x, transform.position.y);
+
         SetRandomCornerTarget();
     }
 
     private void ResetGhost()
     {
-        Destroy(this.gameObject);
+        transform.position = Vector2.zero;
+        gameObject.SetActive(true);
+        StopCoroutine(currentPath);
+        SetRandomCornerTarget();
     }
 
     private void AddTarget(Vector2 target)
@@ -51,11 +61,13 @@ public class GhostMove : MonoBehaviour, Pathfinding
             {
                 Vector2 target_pos = pathArray[i];
                 var speed = Time.deltaTime * movespeed;
+                direction = (target_pos - (Vector2)transform.position).normalized;
                 transform.position = Vector2.MoveTowards(transform.position, target_pos, speed);
                 transform.rotation = Quaternion.identity;
                 yield return null;
             }
         }
+        startPos = new Vector2(transform.position.x, transform.position.y);
         SetRandomCornerTarget();
     }
 
@@ -75,7 +87,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
         if (_endPos != endPosition)
         {
             endPosition = _endPos;
-            await SearchPathRequest(this, _seeker.position, endPosition);
+            await SearchPathRequest(this, startPos, endPosition);
         }
     }
 
@@ -104,7 +116,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
                 if (player.CanEat(transform.position))
                 {
                     SoundManager.Instance.PlayEatGhost();
-                    Destroy(gameObject);
+                    DestroyGhost();
                 }
                 else
                 {
@@ -125,8 +137,25 @@ public class GhostMove : MonoBehaviour, Pathfinding
         StartCoroutine(currentPath);
     }
 
-    public void OnDestroy()
+    public void DestroyGhost()
     {
-        GameManager.Instance.OnRestartGame -= ResetGhost;
+        gameObject.SetActive(false);
     }
+    
+    /*private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (direction == tunnelDir) return;
+        if (other.gameObject.CompareTag("RightTunnel"))
+        {
+            transform.position = ghostSpawner.leftTunnel.position;
+            tunnelDir = direction;
+        }
+        else if(other.gameObject.CompareTag("LeftTunnel"))
+        {
+            transform.position = ghostSpawner.rightTunnel.position;
+            tunnelDir = direction;
+        }
+        
+    
+    }*/
 }

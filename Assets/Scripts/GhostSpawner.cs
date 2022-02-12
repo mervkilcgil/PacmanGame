@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 public class GhostSpawner : BaseSpawner
 {
-    
+    [SerializeField] public Transform rightTunnel, leftTunnel;
     private int maxGhostCount = 4;
     private int ghostIndex;
 

@@ -7,6 +7,7 @@ namespace Astar2DPathFinding.Mika
 {
     public static class AStar
     {
+        public static Action Reset;
         //Max nodes to count. This will prevent counting the whole grid if target is unreachable.
         private const int closedListMaxCount = 100000;
 
@@ -45,6 +46,7 @@ namespace Astar2DPathFinding.Mika
             if (goalNode.walkable == NodeType.obstacle || startNode.walkable == NodeType.obstacle)
             {
                 UnityEngine.Debug.Log("Start or goal inside collider.");
+                Reset?.Invoke();
                 return null;
             }
 

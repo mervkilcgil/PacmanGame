@@ -6,11 +6,8 @@ public class MoveController : MonoBehaviour
     protected Vector2 destination;
     protected Vector2 currPos;
     protected Vector2 direction;
-
-    protected void Start()
-    {
-        OnStart();
-    }
+    protected Direction dirEnum;
+    
 
     protected virtual void OnStart()
     {
@@ -39,13 +36,25 @@ public class MoveController : MonoBehaviour
     protected virtual Vector2 GetDirection()
     {
         if (Input.GetKey(KeyCode.UpArrow))
+        {
+            dirEnum = Direction.Up;
             return Vector2.up;
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            dirEnum = Direction.Right;
             return Vector2.right;
+        }
         else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            dirEnum = Direction.Down;
             return -Vector2.up;
+        }
         else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dirEnum = Direction.Left;
             return -Vector2.right;
+        }
         else return direction;
 
     }
@@ -66,4 +75,12 @@ public class MoveController : MonoBehaviour
         return !hit.collider.CompareTag("Wall");
     }
     
+}
+
+public enum Direction
+{
+    Up,
+    Right,
+    Down,
+    Left
 }

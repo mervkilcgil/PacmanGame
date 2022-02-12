@@ -26,7 +26,8 @@ public static class Vector2Extension
     public static bool IsInBetween(this Vector2 point, Vector2 p1, Vector2 p2)
     {
         float angleArea = Vector3.Angle(p1, p2);
-        return Vector3.Angle(p1, point) < angleArea && Vector3.Angle(p2, point) < angleArea;
+        float p1Area =  Vector3.Angle(p1, point), p2Area = Vector3.Angle(p2, point);
+        return p1Area < angleArea && p2Area < angleArea;
     }
     
 }
