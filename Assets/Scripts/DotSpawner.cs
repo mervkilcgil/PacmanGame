@@ -7,6 +7,7 @@ public class DotSpawner : BaseSpawner
 
     protected override void StartSpawning()
     {
+        return;
         foreach (var path in paths)
         {
             Vector2 direction = path.size.x > path.size.y ? Vector2.right : Vector2.up;

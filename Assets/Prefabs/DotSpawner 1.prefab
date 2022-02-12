@@ -509,6 +509,7 @@ MonoBehaviour:
   - {fileID: 4870525224581113162}
   - {fileID: 8047947077249143656}
   - {fileID: 9172682358363296140}
+  paths: []
 --- !u!1 &3614409829981343842
 GameObject:
   m_ObjectHideFlags: 0
