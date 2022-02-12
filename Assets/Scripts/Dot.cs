@@ -7,7 +7,7 @@ public class Dot : MonoBehaviour
     public LayerMask[] walkableMask;
     private void Start()
     {
-        Collider2D[] hits = null;
+        /*Collider2D[] hits = null;
         Collider2D[] hitWalls = Physics2D.OverlapCircleAll(transform.position, 3, walkableMask[0]);
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, 3, walkableMask[1]);
         hits = new Collider2D[hitWalls.Length + hitPlayer.Length];
@@ -16,6 +16,10 @@ public class Dot : MonoBehaviour
         if (hits == null)
             return;
         if (hits.Length > 0) Destroy(gameObject);
+        else*/
+        {
+            GameManager.Instance.DotCount++;
+        }
         IncreaseScore += ()=>GameManager.Instance.EatPellet();
     }
 
@@ -25,11 +29,6 @@ public class Dot : MonoBehaviour
         {
             SoundManager.Instance.PlayChomp();
             IncreaseScore?.Invoke();
-            Destroy(gameObject);
-            GameManager.Instance.DotCount--;
-        }
-        else if (other.gameObject.CompareTag("Ghost"))
-        {
             Destroy(gameObject);
             GameManager.Instance.DotCount--;
         }
