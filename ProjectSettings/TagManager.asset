@@ -8,6 +8,7 @@ TagManager:
   - Dot
   - Wall
   - Ghost
+  - Tunnel
   layers:
   - Default
   - TransparentFX
