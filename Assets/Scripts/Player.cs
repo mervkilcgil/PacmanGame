@@ -40,8 +40,13 @@ public class Player : MoveController
 
     public bool CanEat(Vector2 pos)
     {
-        return false;
+        Vector2 p1 = direction.PerpendicularClockwise().Rotate(45f).normalized;
+        Vector2 p2 = direction.PerpendicularCounterClockwise().Rotate(45f).normalized;
+        return pos.normalized.IsInBetween(p1,direction) || pos.normalized.IsInBetween(p2, direction);
     }
+    
+    
+    
     protected override void Move(Vector2 direction)
     {
         if(CanGo(direction))
