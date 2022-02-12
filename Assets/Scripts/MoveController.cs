@@ -6,6 +6,7 @@ public class MoveController : MonoBehaviour
     protected int speed = 2;
     protected Vector2 destination;
     protected Vector2 currPos;
+    protected Vector2 direction;
 
     protected void Start()
     {
@@ -31,36 +32,23 @@ public class MoveController : MonoBehaviour
     {
         //if ((Vector2)transform.position == destination)
         {
-            switch (GetDirection())
-            {
-                case Direction.Up:
-                    Move(Vector2.up);
-                    break;
-                case Direction.Down: 
-                    Move(-Vector2.up);
-                    break;
-                case Direction.Right:
-                    Move(Vector2.right);
-                    break;
-                case Direction.Left:
-                    Move(-Vector2.right);
-                    break;
-            }
+            direction = GetDirection();
+            Move(direction);
         }
     }
 
-    protected virtual Direction GetDirection()
+    protected virtual Vector2 GetDirection()
     {
         if (Input.GetKey(KeyCode.UpArrow))
-            return Direction.Up;
+            return Vector2.up;
         else if (Input.GetKey(KeyCode.RightArrow))
-            return Direction.Right;
+            return Vector2.right;
         else if (Input.GetKey(KeyCode.DownArrow))
-            return Direction.Down;
+            return -Vector2.up;
         else if (Input.GetKey(KeyCode.LeftArrow))
-            return Direction.Left;
-        else
-            return Direction.None;
+            return -Vector2.right;
+        else return direction;
+
     }
 
     protected virtual void Move(Vector2 direction)
@@ -79,13 +67,4 @@ public class MoveController : MonoBehaviour
         return !hit.collider.CompareTag("Wall");
     }
     
-}
-
-public enum Direction
-{
-    Up,
-    Right,
-    Down,
-    Left,
-    None
 }

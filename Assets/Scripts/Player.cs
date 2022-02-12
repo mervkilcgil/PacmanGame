@@ -51,6 +51,10 @@ public class Player : MoveController
             animator.SetFloat("DirX", moveDir.x);
             animator.SetFloat("DirY", moveDir.y);
         }
+        else
+        {
+            Debug.Log("Can't go there");
+        }
     }
 
     public void EatGhost()
