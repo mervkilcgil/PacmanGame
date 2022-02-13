@@ -29,7 +29,12 @@ public class GhostSpawner : BaseSpawner
         {
             if(Input.GetKeyDown(KeyCode.D))
                 GameManager.Instance.OnDeath();
-        } 
+        }
+        
 #endif
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
