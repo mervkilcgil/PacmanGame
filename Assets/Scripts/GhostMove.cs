@@ -11,7 +11,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
     public GhostSpawner ghostSpawner;
     private float deltaTime = 5f;
     private float spawnTime = 5f;
-    private float movespeed = 40;
+    private float movespeed = 60;
     private Vector2 endPosition;
     private IEnumerator currentPath;
     private int currentTargetCorner = -1;
@@ -143,6 +143,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
     public void DestroyGhost()
     {
         gameObject.SetActive(false);
+        ResetGhost();
     }
     
     /*private void OnTriggerEnter2D(Collider2D other)
@@ -161,4 +162,16 @@ public class GhostMove : MonoBehaviour, Pathfinding
         
     
     }*/
+    private void FixedUpdate()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                DestroyGhost();
+            }
+        } 
+#endif
+    }
 }

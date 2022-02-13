@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -73,6 +74,16 @@ namespace Astar2DPathFinding.Mika
 
             AddWalkableRegionsToDictonary();
 
+            CreateGrid();
+        }
+
+        public void ResetGrids()
+        {
+            walkableRegionsDictionary.Clear();
+            openList.Clear();
+            closedList.Clear();
+            pathFound = false;
+            AddWalkableRegionsToDictonary();
             CreateGrid();
         }
 

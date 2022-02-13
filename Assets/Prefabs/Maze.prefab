@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 60549565}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightTeleportPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1602922773}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftTeleportPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1395057056875723685}
   - component: {fileID: 4882526540237642342}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477905779471589339}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741754dc2e04e0049bb9c2642a461938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 464, y: 512}
+  gridWorldSize: {x: 500, y: 500}
   nodeRadius: 2
   nearestNodeDistance: 5
   collisionRadius: 5
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6086162685130888410}
   - component: {fileID: 7465297481997795238}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftTunnel
   m_TagString: LeftTunnel
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655635670904212153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 6159930314656622787}
   - component: {fileID: 7124502085193057518}
   - component: {fileID: 2486069622431545288}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1567934215802335279}
   - component: {fileID: 515544668018930762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightTunnel
   m_TagString: RightTunnel
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2445241697790093314}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 3020174264139655975}
   - component: {fileID: 613622695542888139}
   - component: {fileID: 8029037126072733620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,7 +1272,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5477852591389237944}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children:
@@ -1542,7 +1542,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 143.58392, y: -199.71194}
+  m_Offset: {x: 112.265236, y: -199.71194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1553,7 +1553,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 81.77197, y: 16.394348}
+  m_Size: {x: 144.40935, y: 16.394348}
   m_EdgeRadius: 0
 --- !u!1 &6809878382692503181
 GameObject:
@@ -1657,7 +1657,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -140.76024, y: -199.71194}
+  m_Offset: {x: -111.37567, y: -199.71194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1668,7 +1668,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 87.41922, y: 16.394348}
+  m_Size: {x: 146.18835, y: 16.394348}
   m_EdgeRadius: 0
 --- !u!1 &6809878382849012458
 GameObject:
@@ -3291,7 +3291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8593822749538380227}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Maze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
