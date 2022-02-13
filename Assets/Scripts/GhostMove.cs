@@ -17,7 +17,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
     private int currentTargetCorner = -1;
     private Vector2 tunnelDir;
     private Vector2 direction;
-    private Vector2 startPos;
+    private Vector2 startPos, currentPos;
 
     public void SetGhostSpawner(GhostSpawner ghostSpawner)
     {
@@ -26,13 +26,15 @@ public class GhostMove : MonoBehaviour, Pathfinding
         GameManager.Instance.OnRestartGame += ResetGhost;
         tunnelDir = Vector2.zero;
         startPos = new Vector2(transform.position.x, transform.position.y);
+        currentPos = startPos;
 
         SetRandomCornerTarget();
     }
 
     private void ResetGhost()
     {
-        transform.position = Vector2.zero;
+        transform.position = startPos;
+        currentPos = startPos;
         gameObject.SetActive(true);
         StopCoroutine(currentPath);
         SetRandomCornerTarget();
@@ -60,18 +62,19 @@ public class GhostMove : MonoBehaviour, Pathfinding
             while ((Vector2)transform.position != pathArray[i])
             {
                 Vector2 target_pos = pathArray[i];
+                currentPos = new Vector2(transform.position.x, transform.position.y);
                 var speed = Time.deltaTime * movespeed;
                 direction = (target_pos - (Vector2)transform.position).normalized;
-                transform.position = Vector2.MoveTowards(transform.position, target_pos, speed);
+                transform.position = Vector2.MoveTowards(currentPos, target_pos, speed);
                 transform.rotation = Quaternion.identity;
                 yield return null;
             }
         }
-        startPos = new Vector2(transform.position.x, transform.position.y);
+        
         SetRandomCornerTarget();
     }
 
-    private Task<Vector3[]> SearchPathRequest(Pathfinding requester, Vector2 startPos, Vector2 endPos)
+    private Task<Vector3[]> SearchPathRequest(Pathfinding requester, Vector2 _startPos, Vector2 endPos)
     {
         var taskCompletionSource = new TaskCompletionSource<Vector3[]>();
         Node start = PathfindingGrid.Instance.NodeFromWorldPoint(startPos);

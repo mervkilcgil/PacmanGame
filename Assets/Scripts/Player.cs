@@ -32,6 +32,7 @@ public class Player : MoveController
         eatRange.Add(Direction.Down, new Tuple<Vector2, Vector2>(v3, v4));
         eatRange.Add(Direction.Right, new Tuple<Vector2, Vector2>(v1, v4));
         eatRange.Add(Direction.Left, new Tuple<Vector2, Vector2>(v2, v3));
+        eatRange.Add(Direction.None, new Tuple<Vector2, Vector2>(v1, v4));
         
     }
     

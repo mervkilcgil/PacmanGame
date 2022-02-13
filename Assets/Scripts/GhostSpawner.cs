@@ -22,4 +22,14 @@ public class GhostSpawner : BaseSpawner
         }
         
     }
+    private void FixedUpdate()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if(Input.GetKeyDown(KeyCode.D))
+                GameManager.Instance.OnDeath();
+        } 
+#endif
+    }
 }
