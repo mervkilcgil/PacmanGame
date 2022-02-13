@@ -20,32 +20,32 @@ public class Player : MoveController
     protected override void OnStart()
     {
         GameManager.Instance.Player = this;
-        tunnelDir = Vector2.zero;
         startPos = transform.position;
-        destination = transform.position;
-        transform.rotation = Quaternion.Euler(0,0,0);
-        animator.SetFloat("DirX", 0);
-        animator.SetFloat("DirY", 0);
-        GameManager.Instance.OnRestartGame += OnRestartGame;
+        ResetPlayer();
+        GameManager.Instance.OnRestartGame += ResetPlayer;
         eatRange = new Dictionary<Direction, Tuple<Vector2, Vector2>>();
-        Vector2 v1 = (corners[0].position - transform.position).normalized;
-        Vector2 v2 = (corners[1].position - transform.position).normalized;
-        Vector2 v3 = (corners[2].position - transform.position).normalized;
-        Vector2 v4 = (corners[3].position - transform.position).normalized;
+        Vector2 v1 = ((Vector2)corners[0].position - startPos).normalized;
+        Vector2 v2 = ((Vector2)corners[1].position - startPos).normalized;
+        Vector2 v3 = ((Vector2)corners[2].position - startPos).normalized;
+        Vector2 v4 = ((Vector2)corners[3].position - startPos).normalized;
         eatRange.Add(Direction.Up, new Tuple<Vector2, Vector2>(v1, v2));
         eatRange.Add(Direction.Down, new Tuple<Vector2, Vector2>(v3, v4));
         eatRange.Add(Direction.Right, new Tuple<Vector2, Vector2>(v1, v4));
         eatRange.Add(Direction.Left, new Tuple<Vector2, Vector2>(v2, v3));
         
     }
-
-    private void OnRestartGame()
+    
+    private void ResetPlayer()
     {
+        tunnelDir = Vector2.zero;
+        destination = startPos;
+        transform.rotation = Quaternion.Euler(0,0,0);
         animator.SetFloat("DirX", 0);
         animator.SetFloat("DirY", 0);
+        animator.Play("right");
         transform.position = startPos;
-        destination = startPos;
         direction = Vector2.zero;
+        dirEnum = Direction.None;
     }
 
     protected override void OnUpdate()
@@ -64,6 +64,7 @@ public class Player : MoveController
         var range = eatRange[dirEnum];
         Vector2 p1 = range.Item1.normalized;
         Vector2 p2 = range.Item2.normalized;
+        pos = pos - (Vector2)transform.position;
         bool inRange1 = pos.normalized.IsInBetween(p1, direction.normalized);
         bool inRange2 = pos.normalized.IsInBetween(p2, direction.normalized);
         return inRange1 || inRange2;
