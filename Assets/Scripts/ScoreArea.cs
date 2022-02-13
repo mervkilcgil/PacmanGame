@@ -40,4 +40,9 @@ public class ScoreArea : MonoBehaviour
             }
         }
     }
+    
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
 }
