@@ -1,9 +1,9 @@
+using Astar2DPathFinding.Mika;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class GhostSpawner : BaseSpawner
 {
-    [SerializeField] public Transform rightTunnel, leftTunnel;
+    [SerializeField] private PathfindingGrid grid;
     private int maxGhostCount = 4;
     private int ghostIndex;
 
@@ -18,7 +18,7 @@ public class GhostSpawner : BaseSpawner
             var ghostPrefabs = GetGhostPrefabs();
             GameObject randomGhost = ghostPrefabs[i];
             var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity, transform).GetComponent<GhostMove>();
-            ghost.SetGhostSpawner(this);
+            ghost.SetGhostSpawner(this, grid, i*5f);
         }
         
     }

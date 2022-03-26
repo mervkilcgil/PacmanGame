@@ -23,7 +23,7 @@ namespace Astar2DPathFinding.Mika
         [SerializeField] private bool usePathSmooting;
         [SerializeField] private bool showPathSmoothing;
 
-        public async void FindPath(Transform _seeker, Vector2 _endPos)
+        public async void FindPath(Transform _seeker, Vector2 _endPos, PathfindingGrid grid)
         {
             if (!readyToCountPath)
             {
@@ -55,7 +55,7 @@ namespace Astar2DPathFinding.Mika
             if (_endPos != endPosition)
             {
                 endPosition = _endPos;
-                await SearchPathRequest(this, _seeker.position, endPosition);
+                await SearchPathRequest(this, _seeker.position, endPosition, grid);
             }
         }
 
@@ -68,19 +68,19 @@ namespace Astar2DPathFinding.Mika
             }
         }
 
-        public void OnPathFound(Vector2[] newPath)
+        public void OnPathFound(Vector2[] newPath, PathfindingGrid grid)
         {
             if (currentPath != null)
             {
                 StopCoroutine(currentPath);
             }
 
-            currentPath = movepath(newPath);
+            currentPath = movepath(newPath, grid);
             pathArray = newPath;
             StartCoroutine(currentPath);
         }
 
-        public IEnumerator movepath(Vector2[] pathArray)
+        public IEnumerator movepath(Vector2[] pathArray, PathfindingGrid grid)
         {
             if (pathArray == null)
             {
@@ -100,7 +100,7 @@ namespace Astar2DPathFinding.Mika
                     if (usePathSmooting && i < pathArray.Length - 1)
                     {
                         bool cantSeeTarget = Physics2D.Linecast(startPos.transform.position, pathArray[i + 1],
-                            PathfindingGrid.Instance.unwalkableMask);
+                            grid.unwalkableMask);
                         if (cantSeeTarget == false)
                         {
                             if (showPathSmoothing)
@@ -115,7 +115,7 @@ namespace Astar2DPathFinding.Mika
                     else
                     {
                         bool cantSeeTarget = Physics2D.Linecast(startPos.transform.position, endPos,
-                            PathfindingGrid.Instance.unwalkableMask);
+                            grid.unwalkableMask);
                         if (cantSeeTarget == false)
                         {
                             if (showPathSmoothing)
@@ -157,15 +157,15 @@ namespace Astar2DPathFinding.Mika
             //}
         }
 
-        private static Task<Vector3[]> SearchPathRequest(Pathfinding requester, Vector2 startPos, Vector2 endPos)
+        private static Task<Vector3[]> SearchPathRequest(Pathfinding requester, Vector2 startPos, Vector2 endPos, PathfindingGrid grid)
         {
             var taskCompletionSource = new TaskCompletionSource<Vector3[]>();
 
-            Node start = PathfindingGrid.Instance.NodeFromWorldPoint(startPos);
-            Node end = PathfindingGrid.Instance.ClosestNodeFromWorldPoint(endPos, start.gridAreaID);
+            Node start = grid.NodeFromWorldPoint(startPos);
+            Node end = grid.ClosestNodeFromWorldPoint(endPos, start.gridAreaID);
             Vector2[] newPath = null;
-            newPath = AStar.FindPath(start, end);
-            requester.OnPathFound(newPath);
+            newPath = AStar.FindPath(start, end, grid);
+            requester.OnPathFound(newPath, grid);
 
             return taskCompletionSource.Task;
         }

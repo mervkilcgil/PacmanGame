@@ -17,25 +17,24 @@ namespace Astar2DPathFinding.Mika
         /// <param name="startPos"></param>
         /// <param name="targetPos"></param>
         /// <returns></returns>
-        public static Vector2[] FindPath(Node startNode, Node goalNode)
+        public static Vector2[] FindPath(Node startNode, Node goalNode, PathfindingGrid grid)
         {
             //How long will path founding take
             Stopwatch sw = new Stopwatch();
             //For showing path counting process. Resets grid.
-
-            if (PathfindingGrid.Instance.showPathSearchDebug)
+            if (grid.showPathSearchDebug)
             {
                 sw.Start();
 
-                PathfindingGrid.openList.Clear();
-                PathfindingGrid.closedList.Clear();
-                PathfindingGrid.pathFound = false;
+                grid.openList.Clear();
+                grid.closedList.Clear();
+                grid.pathFound = false;
             }
 
-            PathfindingGrid.Instance.ResetNodes();
+            grid.ResetNodes();
             int nodeCount = 0;
 
-            Heap<Node> openSet = new Heap<Node>(PathfindingGrid.Maxsize);
+            Heap<Node> openSet = new Heap<Node>(grid.Maxsize);
 
 
             //if (goalNode.gridAreaID != startNode.gridAreaID) {
@@ -53,9 +52,9 @@ namespace Astar2DPathFinding.Mika
 
             openSet.Add(startNode);
             //For showing path counting 
-            if (PathfindingGrid.Instance.showGrid)
+            if (grid.showGrid)
             {
-                PathfindingGrid.openList.Add(startNode);
+                grid.openList.Add(startNode);
             }
 
             nodeCount++;
@@ -70,9 +69,9 @@ namespace Astar2DPathFinding.Mika
                 currentNode.inClosedList = true;
 
                 //For showing path counting 
-                if (PathfindingGrid.Instance.showGrid)
+                if (grid.showGrid)
                 {
-                    PathfindingGrid.closedList.Add(currentNode);
+                    grid.closedList.Add(currentNode);
                 }
 
 
@@ -80,14 +79,14 @@ namespace Astar2DPathFinding.Mika
                 {
                     //For testing path calculation. Can be removed from final version.
                     sw.Stop();
-                    if (PathfindingGrid.Instance.showPathSearchDebug)
+                    if (grid.showPathSearchDebug)
                     {
                         Vector2[] path = RetracePath(startNode, goalNode);
                         UnityEngine.Debug.Log("<color=Blue>Path found! </color> Time took to calculate path: " +
                                               sw.Elapsed + "ms. Number of nodes counted " + nodeCount +
                                               ". Path lenght: " + path.Length + ". Heurastics: " +
-                                              PathfindingGrid.Instance.heuristicMethod);
-                        PathfindingGrid.pathFound = true;
+                                              grid.heuristicMethod);
+                        grid.pathFound = true;
                     }
 
                     return RetracePath(startNode, goalNode);
@@ -111,13 +110,13 @@ namespace Astar2DPathFinding.Mika
                         continue;
                     }
 
-                    int newCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour) +
+                    int newCostToNeighbour = currentNode.gCost + GetDistance(currentNode, neighbour, grid) +
                                              neighbour.movementPenalty;
                     if (newCostToNeighbour < neighbour.gCost || neighbour.inOpenSet == false)
                     {
                         neighbour.gCost = newCostToNeighbour;
-                        neighbour.hCost = Mathf.RoundToInt(GetDistance(neighbour, goalNode) *
-                                                           PathfindingGrid.Instance.heuristicMultiplier);
+                        neighbour.hCost = Mathf.RoundToInt(GetDistance(neighbour, goalNode, grid) *
+                                                           grid.heuristicMultiplier);
                         neighbour.parent = currentNode;
 
                         if (neighbour.inOpenSet == false)
@@ -126,9 +125,9 @@ namespace Astar2DPathFinding.Mika
                             neighbour.inOpenSet = true;
 
                             //For showing path counting 
-                            if (PathfindingGrid.Instance.showGrid)
+                            if (grid.showGrid)
                             {
-                                PathfindingGrid.openList.Add(neighbour);
+                                grid.openList.Add(neighbour);
                             }
 
                             nodeCount++;
@@ -141,7 +140,7 @@ namespace Astar2DPathFinding.Mika
                 }
             }
 
-            if (PathfindingGrid.Instance.showPathSearchDebug)
+            if (grid.showPathSearchDebug)
             {
                 sw.Stop();
                 UnityEngine.Debug.Log("<color=red>Path not found! </color> Time took to calculate path: " +
@@ -214,7 +213,7 @@ namespace Astar2DPathFinding.Mika
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static Vector2[] pathSmooter(Vector2[] path)
+        public static Vector2[] pathSmooter(Vector2[] path, PathfindingGrid grid)
         {
             List<Vector2> waypoints = new List<Vector2>();
             int currentNode = 0;
@@ -231,7 +230,7 @@ namespace Astar2DPathFinding.Mika
                 }
 
                 bool cantSeeTarget =
-                    Physics2D.Linecast(path[currentNode], path[i], PathfindingGrid.Instance.unwalkableMask);
+                    Physics2D.Linecast(path[currentNode], path[i], grid.unwalkableMask);
                 if (cantSeeTarget)
                 {
                     waypoints.Add(path[i - 1]);
@@ -243,13 +242,13 @@ namespace Astar2DPathFinding.Mika
             return waypoints.ToArray();
         }
 
-        private static int GetDistance(Node nodeA, Node nodeB)
+        private static int GetDistance(Node nodeA, Node nodeB, PathfindingGrid grid)
         {
-            if (PathfindingGrid.Instance.heuristicMethod == PathfindingGrid.Heuristics.VectorMagnitude)
+            if (grid.heuristicMethod == PathfindingGrid.Heuristics.VectorMagnitude)
             {
                 return GetDistance2(nodeA, nodeB);
             }
-            else if (PathfindingGrid.Instance.heuristicMethod == PathfindingGrid.Heuristics.Euclidean)
+            else if (grid.heuristicMethod == PathfindingGrid.Heuristics.Euclidean)
             {
                 return GetDistance3(nodeA, nodeB);
             }

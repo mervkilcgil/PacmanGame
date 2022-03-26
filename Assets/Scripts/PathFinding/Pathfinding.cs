@@ -6,6 +6,6 @@ namespace Astar2DPathFinding.Mika
 {
     public interface Pathfinding
     {
-        void OnPathFound(Vector2[] newPath);
+        void OnPathFound(Vector2[] newPath, PathfindingGrid grid);
     }
 }

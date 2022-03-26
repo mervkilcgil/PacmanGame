@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b24c02-d2fe-4318-aac1-e687ce770277" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PacmanGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GhostSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/AStar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/AStar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/CountPath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Pathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Pathfinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathfindingGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PathFinding/PathfindingGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/SeekerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/SeekerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Singleton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PathFinding/Singleton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +66,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Documents/untitled folder/pacmanM1.app/Contents/MacOS/packman" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/untitled folder/pacmanM1.app/Contents/MacOS" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -64,10 +84,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="46386">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="46386" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -87,6 +107,7 @@
       <workItem from="1643906590097" duration="1353000" />
       <workItem from="1644073380128" duration="14005000" />
       <workItem from="1644651255683" duration="3799000" />
+      <workItem from="1648300201238" duration="1722000" />
     </task>
     <servers />
   </component>
@@ -136,32 +157,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Player.cs</url>
-          <line>69</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" initialLine="68" containingFunctionPresentation="method 'CanEat'">
-            <startOffsets>
-              <option value="2563" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2591" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/GhostMove.cs</url>
-          <line>35</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GhostMove.cs" initialLine="34" containingFunctionPresentation="method 'ResetGhost'">
-            <startOffsets>
-              <option value="1048" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1078" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -12,7 +11,7 @@ namespace Astar2DPathFinding.Mika
         public int terrainPenalty;
     }
 
-    public class PathfindingGrid : Singleton<PathfindingGrid>
+    public class PathfindingGrid : MonoBehaviour
     {
         [SerializeField] private Vector2 gridWorldSize = new Vector2(100, 100);
         [SerializeField] private float nodeRadius = 1;
@@ -58,20 +57,18 @@ namespace Astar2DPathFinding.Mika
         }
 
         //This is for showing calculated path. This can be used to debug paths. Can be removed.
-        public static List<Node> openList = new List<Node>();
-        public static List<Node> closedList = new List<Node>();
-        public static bool pathFound;
+        public List<Node> openList = new List<Node>();
+        public List<Node> closedList = new List<Node>();
+        public bool pathFound;
 
 
-        public static int Maxsize
+        public int Maxsize
         {
-            get { return instance.gridSizeX * instance.gridSizeY; }
+            get { return gridSizeX * gridSizeY; }
         }
 
-        public override void Awake()
+        public void Awake()
         {
-            base.Awake();
-
             AddWalkableRegionsToDictonary();
 
             CreateGrid();
@@ -83,6 +80,7 @@ namespace Astar2DPathFinding.Mika
             openList.Clear();
             closedList.Clear();
             pathFound = false;
+            grid = null;
             AddWalkableRegionsToDictonary();
             CreateGrid();
         }
@@ -275,7 +273,7 @@ namespace Astar2DPathFinding.Mika
                             continue;
                         }
                         //Calculate obstacles while creating path
-                        //AStar.CheckIfNodeIsObstacle(newNode);
+                       //CheckIfNodeIsObstacle(newNode);
 
                         //Prevent corner cutting
                         if (connectionsOptions.Equals(Connections.directional8DontCutCorners) &&
@@ -335,11 +333,11 @@ namespace Astar2DPathFinding.Mika
             return grid[x, y];
         }
 
-        public static void CheckIfNodeIsObstacle(Node node)
+        public void CheckIfNodeIsObstacle(Node node)
         {
             ////Calculate obstacles while creating path
             Collider2D[] colliders = Physics2D.OverlapCircleAll(node.worldPosition,
-                Instance.nodeRadius * Instance.collisionRadius, Instance.unwalkableMask);
+                nodeRadius * collisionRadius, unwalkableMask);
             if (colliders.Length > 0)
             {
                 node.walkable = NodeType.obstacle;
@@ -461,6 +459,12 @@ namespace Astar2DPathFinding.Mika
                     }
                 }
             }
+        }
+
+        public void Reset()
+        {
+            ResetNodes();
+            ResetGrids();
         }
     }
 }

@@ -183,8 +183,7 @@ MonoBehaviour:
   - {fileID: 1065008992}
   - {fileID: 1605155831}
   - {fileID: 2115311077}
-  rightTunnel: {fileID: 0}
-  leftTunnel: {fileID: 0}
+  grid: {fileID: 302034798}
 --- !u!4 &60549565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 60549565, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
@@ -276,6 +275,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d28fddde1e8047c6ad071877067aeef, type: 3}
+--- !u!114 &302034798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4882526540237642342, guid: 5e3b1d034d0cb4d3ca026edea64ff717, type: 3}
+  m_PrefabInstance: {fileID: 6809878383675967017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741754dc2e04e0049bb9c2642a461938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &331388547
 PrefabInstance:
   m_ObjectHideFlags: 0
