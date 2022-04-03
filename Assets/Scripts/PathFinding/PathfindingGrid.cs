@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Astar2DPathFinding.Mika
 {
@@ -150,10 +151,15 @@ namespace Astar2DPathFinding.Mika
                             movementPenalty = newPenalty;
                         }
                     }
-                    /*if (hits.collider.CompareTag("Wall"))
+
+                    if (hit.ToList().FindAll(x=> x.CompareTag("Wall")).Count > 0)
                     {
                         nodeType = NodeType.obstacle;
-                    }*/
+                    }
+                    else if(hit.ToList().FindAll(x => x.CompareTag("Ghost")).Count > 0)
+                    {
+                        nodeType = NodeType.walkable;
+                    }
                     grid[x, y] = new Node(nodeType, worldPoint, x, y, movementPenalty);
                 }
             }
@@ -169,10 +175,10 @@ namespace Astar2DPathFinding.Mika
             }
 
             sw.Stop();
-            print("Walk: " + walk + " Obs: " + obs + "Time took create the grid" + sw.Elapsed);
+            //print("Walk: " + walk + " Obs: " + obs + "Time took create the grid" + sw.Elapsed);
             SetAreas();
         }
-        
+
         int currentIDThing = 1;
 
         public void SetAreas()
@@ -222,7 +228,7 @@ namespace Astar2DPathFinding.Mika
                 }
             }
 
-            print("Number of nodes:" + closedList.Count + ". Number of grid nodes:" + Maxsize);
+            //print("Number of nodes:" + closedList.Count + ". Number of grid nodes:" + Maxsize);
         }
 
 
@@ -273,7 +279,7 @@ namespace Astar2DPathFinding.Mika
                             continue;
                         }
                         //Calculate obstacles while creating path
-                       //CheckIfNodeIsObstacle(newNode);
+                        //CheckIfNodeIsObstacle(newNode);
 
                         //Prevent corner cutting
                         if (connectionsOptions.Equals(Connections.directional8DontCutCorners) &&

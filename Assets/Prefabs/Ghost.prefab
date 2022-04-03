@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 470128524645542156}
   - component: {fileID: 4189046980784103021}
   - component: {fileID: 3683010273810772320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ghost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0338f0639467e4dbea0d694076cbda82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 0}
   ghostSpawner: {fileID: 0}
 --- !u!61 &4189046980784103021
 BoxCollider2D:

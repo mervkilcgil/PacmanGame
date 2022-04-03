@@ -84,7 +84,7 @@ public class Player : MoveController
         }
         else
         {
-            Debug.Log("Can't go there");
+            //Debug.Log("Can't go there");
         }
     }
     

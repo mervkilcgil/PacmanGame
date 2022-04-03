@@ -17,7 +17,9 @@ public class GhostSpawner : BaseSpawner
         {
             var ghostPrefabs = GetGhostPrefabs();
             GameObject randomGhost = ghostPrefabs[i];
-            var ghost = Instantiate(randomGhost, transform.position, Quaternion.identity, transform).GetComponent<GhostMove>();
+            Vector2 pos = transform.position;
+            pos.x = pos.x + (i - 2) * 6f;
+            var ghost = Instantiate(randomGhost, pos, Quaternion.identity, transform).GetComponent<GhostMove>();
             ghost.SetGhostSpawner(this, grid, i*5f);
         }
         

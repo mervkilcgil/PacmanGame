@@ -75,6 +75,8 @@ public class GhostMove : MonoBehaviour, Pathfinding
                 else
                 {
                     StopCoroutine(currentPath);
+                    StartCoroutine(SetRandomCornerTarget(0f));
+                    yield break;
                 }
                 yield return null;
             }
@@ -109,13 +111,13 @@ public class GhostMove : MonoBehaviour, Pathfinding
         yield return new WaitForSeconds(delay);
         List<Vector2> targets = new List<Vector2>(ghostSpawner.Corners.Count + 1);
         ghostSpawner.Corners.ForEach(i=> targets.Add(i));
-        /*targets.Add(GameManager.Instance.PlayerPosition);
+        targets.Add(GameManager.Instance.PlayerPosition);
         int randomCorner = Random.Range(1, 5);
         while (currentTargetCorner == randomCorner)
         {
             randomCorner = Random.Range(1, 5);
         }
-        currentTargetCorner = randomCorner;*/
+        currentTargetCorner = randomCorner;
         AddTarget(GameManager.Instance.PlayerPosition);
     }
     
@@ -171,7 +173,7 @@ public class GhostMove : MonoBehaviour, Pathfinding
         RaycastHit2D hit = Physics2D.Linecast(targetPos, currentPos);
         if(hit.collider == null)
             return true;
-        return !hit.collider.CompareTag("Wall");
+        return !hit.collider.CompareTag("Wall") ;
     }
     /*private void OnTriggerEnter2D(Collider2D other)
     {

@@ -280,18 +280,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridWorldSize: {x: 500, y: 500}
-  nodeRadius: 2
+  nodeRadius: 3
   nearestNodeDistance: 5
-  collisionRadius: 5
+  collisionRadius: 3
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 8
-  walkableRegions: []
-  connectionsOptions: 0
+  walkableRegions:
+  - terrainMask:
+      serializedVersion: 2
+      m_Bits: 128
+    terrainPenalty: 0
+  connectionsOptions: 1
   heuristicMethod: 0
   heuristicMultiplier: 0
-  showGrid: 0
+  showGrid: 1
   showPathSearchDebug: 0
+  pathFound: 0
 --- !u!1 &655635670904212153
 GameObject:
   m_ObjectHideFlags: 0
